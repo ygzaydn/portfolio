@@ -1,5 +1,7 @@
 import React from "react";
 import { Frame, Page } from "framer";
+import { Header } from "./components/header/headerComponent";
+import { Footer } from "./components/footer/footerComponent";
 import "./App.css";
 
 const App = () => {
@@ -7,17 +9,18 @@ const App = () => {
     <Page
       overflow="hidden"
       width="60vw"
-      height="80vh"
+      height="90vh"
       momentum
       defaultEffect={"cube"}
       alignment="center"
       currentPage={1}
     >
       <Frame scale={0.9} background="fff" radius={60}>
-        About Me
+        Portfolio
       </Frame>
       <Frame scale={0.9} background="fff" radius={60}>
-        Portfolio
+        <Header />
+        <Footer />
       </Frame>
       <Frame scale={0.9} background="fff" radius={60}>
         Contact Me
