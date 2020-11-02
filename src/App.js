@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Frame, Page } from "framer";
+import "./App.css";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Page
+      overflow="hidden"
+      width="60vw"
+      height="80vh"
+      momentum
+      defaultEffect={"cube"}
+      alignment="center"
+      currentPage={1}
+    >
+      <Frame scale={0.9} background="fff" radius={60}>
+        About Me
+      </Frame>
+      <Frame scale={0.9} background="fff" radius={60}>
+        Portfolio
+      </Frame>
+      <Frame scale={0.9} background="fff" radius={60}>
+        Contact Me
+      </Frame>
+    </Page>
   );
-}
+};
 
 export default App;
