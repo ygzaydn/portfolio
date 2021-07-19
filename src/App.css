@@ -11,7 +11,7 @@ body {
   display: flex;
   place-content: center;
   place-items: center;
-  background: rgba(0, 85, 255, 1);
+  background: black;
   margin: 0;
   padding: 0;
 }
