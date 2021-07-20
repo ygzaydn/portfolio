@@ -4,37 +4,47 @@ import { Typography, Grid, withStyles } from "@material-ui/core";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import TwitterIcon from "@material-ui/icons/Twitter";
+import { compose } from "recompose";
+import { withWindowConsumer } from "../../contexts/window/consumer";
 
 const useStyles = () => ({
   footerContainer: {
-    padding: "50px",
-    justifyContent: "space-between",
+    padding: "min(5%,50px)",
+    justifyContent: (props) =>
+      props.width > props.limit ? "space-between" : "flex-end",
     position: "sticky",
     bottom: 0,
   },
   socialIcon: {
     display: "flex",
     justifyContent: "space-evenly",
+    alignItems: "center",
     "& svg": {
       fill: "#A4A4A4",
       cursor: "pointer",
       "&:hover": {
-        fill: "white",
+        fill: "#4BFFA5",
       },
       transition: "all 0.25s ease-out",
     },
   },
 });
 
-const Footer = ({ classes }) => {
+const Footer = ({ classes, limit, width }) => {
+  console.log(width);
   return (
     <Grid container className={classes.footerContainer}>
-      <Grid item xs={4}>
-        <Grid container>
-          <Typography color="secondary">E-mail: ygzaydns@gmail.com</Typography>
+      {width > limit ? (
+        <Grid item md={4} xs={6}>
+          <Grid container>
+            <Typography color="secondary" variant="subtitle1">
+              E-mail: ygzaydns@gmail.com
+            </Typography>
+          </Grid>
         </Grid>
-      </Grid>
-      <Grid item xs={2} className={classes.socialIcon}>
+      ) : null}
+
+      <Grid item md={2} xs={6} className={classes.socialIcon}>
         <LinkedInIcon />
         <GitHubIcon />
         <TwitterIcon />
@@ -43,4 +53,4 @@ const Footer = ({ classes }) => {
   );
 };
 
-export default withStyles(useStyles)(Footer);
+export default compose(withWindowConsumer, withStyles(useStyles))(Footer);
