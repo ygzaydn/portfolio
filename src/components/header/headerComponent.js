@@ -63,6 +63,7 @@ const Header = ({ classes, width, limit }) => {
     });
     setAnchorEl(null);
   };
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       let y = window.pageYOffset;
@@ -109,7 +110,13 @@ const Header = ({ classes, width, limit }) => {
           >
             Tech
           </Typography>
-          <Typography color="secondary">Blogs</Typography>
+          <Typography
+            color="secondary"
+            key="project-desktop"
+            onClick={() => scrollTo("project-mobile")}
+          >
+            Projects
+          </Typography>
           <Typography color="secondary">Contacts</Typography>
         </Grid>
       ) : (
@@ -162,9 +169,10 @@ const Header = ({ classes, width, limit }) => {
 
             <MenuItem
               style={{ borderBottom: "0.5px solid lightgray" }}
-              onClick={() => scrollTo("services")}
+              key="project-mobile"
+              onClick={() => scrollTo("project-mobile")}
             >
-              Blogs
+              Projects
             </MenuItem>
             <MenuItem onClick={() => scrollTo("services")}>Contacts</MenuItem>
           </Menu>

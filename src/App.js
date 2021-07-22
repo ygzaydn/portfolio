@@ -12,10 +12,16 @@ import { withWindowProvider } from "./contexts/window/provider";
 import { withWindowConsumer } from "./contexts/window/consumer";
 import ServiceCard from "./components/serviceCard/serviceCard";
 import TechStack from "./components/techstack/techStack";
+import ProjectCard from "./components/projectCard/projectCard";
 
 import DeveloperModeIcon from "@material-ui/icons/DeveloperMode";
 import CodeIcon from "@material-ui/icons/Code";
 import ColorizeIcon from "@material-ui/icons/Colorize";
+
+import ICCImage from "./images/icc.jpg";
+import RidenrateImage from "./images/ridenrate.jpg";
+import MellImage from "./images/mell.jpg";
+import LibrejournalImage from "./images/librejournal.jpg";
 
 const useStyles = () => ({
   homepageContainer: {
@@ -44,6 +50,14 @@ const useStyles = () => ({
     padding: " 10%",
     justifyContent: "space-around",
     alignItems: "center",
+  },
+  projectsGrid: {
+    display: "flex",
+    justifyContent: "center",
+    margin: "2rem 0",
+  },
+  projectsContainer: {
+    margin: "5rem 0",
   },
 });
 
@@ -107,7 +121,53 @@ const App = ({ classes, width, height }) => {
             <TechStack />
           </Grid>
         </Grid>
-
+        <Grid
+          container
+          className={classes.projectsContainer}
+          id="project-desktop"
+        >
+          <Grid item xs={12} style={{ marginBottom: "5%" }} id="project-mobile">
+            <Typography color="primary" variant="h2">
+              Projects
+            </Typography>
+          </Grid>
+          <Grid item xs={12} className={classes.projectsGrid}>
+            <ProjectCard
+              title="Icecrown Boost Community"
+              description="ICC Boost Community"
+              image={ICCImage}
+              tech="Javascript - React - Redux - Firebase - Material UI - Node.js"
+              link="https://shop-dot-pro-boost-test-env.ey.r.appspot.com/"
+            />
+          </Grid>
+          <Grid item xs={12} className={classes.projectsGrid}>
+            <ProjectCard
+              title="Librejournal"
+              description="Librejournal"
+              image={LibrejournalImage}
+              tech="Javascript - React - Redux - MongoDB - Material UI - Node.js"
+              link="http://librejournal-fe.herokuapp.com/"
+            />
+          </Grid>
+          <Grid item xs={12} className={classes.projectsGrid}>
+            <ProjectCard
+              title="Mell Beautiy Center"
+              description="Mell Beautiy Center"
+              image={MellImage}
+              tech="Javascript - React - Firebase - Material UI"
+              link="http://mellguzellikmerkezi.com/"
+            />
+          </Grid>
+          <Grid item xs={12} className={classes.projectsGrid}>
+            <ProjectCard
+              title="Ride'n'Rate"
+              description="Ride'n'Rate"
+              image={RidenrateImage}
+              tech="Javascript - HTML - CSS"
+              link="http://ridenrate.herokuapp.com/"
+            />
+          </Grid>
+        </Grid>
         <Grid container className={classes.trialContainer}></Grid>
       </Grid>
       <Footer />
