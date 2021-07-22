@@ -50,8 +50,8 @@ const useStyles = () => ({
 const App = ({ classes, width, height }) => {
   return (
     <Grid container>
-      <Grid container style={{ overflowY: "auto", height: "100vh" }}>
-        <Header />
+      <Header />
+      <Grid container style={{ height: "100vh" }}>
         <Grid container className={classes.homepageContainer} id="home">
           <Typography color="error" variant="h6">
             Hello I'm{" "}
@@ -109,8 +109,8 @@ const App = ({ classes, width, height }) => {
         </Grid>
 
         <Grid container className={classes.trialContainer}></Grid>
-        <Footer />
       </Grid>
+      <Footer />
     </Grid>
   );
 };

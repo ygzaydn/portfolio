@@ -12,8 +12,9 @@ const useStyles = () => ({
     padding: "min(5%,50px)",
     justifyContent: (props) =>
       props.width > props.limit ? "space-between" : "flex-end",
-    position: "sticky",
+    position: "fixed",
     bottom: 0,
+    transition: "all 0.5s ease-out",
   },
   socialIcon: {
     display: "flex",
@@ -31,6 +32,17 @@ const useStyles = () => ({
 });
 
 const Footer = ({ classes, limit, width }) => {
+  window.addEventListener("scroll", () => {
+    let y = window.pageYOffset;
+    let header = document.getElementById("footer");
+    if (y) {
+      header.style.padding = "min(2.5%,25px)";
+      header.style.backgroundColor = "black";
+    } else {
+      header.style.padding = "min(5%,50px)";
+    }
+  });
+
   return (
     <Grid container className={classes.footerContainer} id="footer">
       {width > limit ? (

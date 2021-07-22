@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Grid,
   Typography,
@@ -15,10 +15,11 @@ const useStyles = () => ({
   headerContainer: {
     padding: "min(5%,50px)",
     justifyContent: "space-between",
-    position: "absolute",
+    position: "fixed",
     alignItems: "center",
     top: 0,
-    backgroundColor: "black",
+    transition: "all 0.5s ease-out",
+    height: "10%",
   },
   nameGrid: {
     display: "flex",
@@ -55,15 +56,29 @@ const Header = ({ classes, width, limit }) => {
   };
 
   const scrollTo = (element) => {
-    document
-      .getElementById(`${element}`)
-      .scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "nearest",
-      });
+    document.getElementById(`${element}`).scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "nearest",
+    });
     setAnchorEl(null);
   };
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      let y = window.pageYOffset;
+      let header = document.getElementById("header");
+      if (y) {
+        header.style.backgroundColor = "black";
+        header.style.borderBottom = "0.2px solid lightgray";
+        header.style.padding = "min(3.5%,35px)";
+        header.style.zIndex = "50";
+      } else {
+        header.style.backgroundColor = "inherit";
+        header.style.borderBottom = "none";
+        header.style.padding = "min(5%,50px)";
+      }
+    });
+  }, []);
 
   return (
     <Grid container className={classes.headerContainer} id="header">
@@ -87,7 +102,13 @@ const Header = ({ classes, width, limit }) => {
           >
             Services
           </Typography>
-          <Typography color="secondary">Works</Typography>
+          <Typography
+            color="secondary"
+            key="stack-desktop"
+            onClick={() => scrollTo("stack-desktop")}
+          >
+            Tech
+          </Typography>
           <Typography color="secondary">Blogs</Typography>
           <Typography color="secondary">Contacts</Typography>
         </Grid>
@@ -127,17 +148,18 @@ const Header = ({ classes, width, limit }) => {
             </MenuItem>
             <MenuItem
               style={{ borderBottom: "0.5px solid lightgray" }}
-              key="services-mobile"
               onClick={() => scrollTo("services-mobile")}
             >
               Services
             </MenuItem>
             <MenuItem
               style={{ borderBottom: "0.5px solid lightgray" }}
-              onClick={() => scrollTo("services")}
+              key="stack-mobile"
+              onClick={() => scrollTo("stack-mobile")}
             >
-              Works
+              Tech
             </MenuItem>
+
             <MenuItem
               style={{ borderBottom: "0.5px solid lightgray" }}
               onClick={() => scrollTo("services")}
