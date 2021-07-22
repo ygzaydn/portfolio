@@ -31,9 +31,8 @@ const useStyles = () => ({
 });
 
 const Footer = ({ classes, limit, width }) => {
-  console.log(width);
   return (
-    <Grid container className={classes.footerContainer}>
+    <Grid container className={classes.footerContainer} id="footer">
       {width > limit ? (
         <Grid item md={4} xs={6}>
           <Grid container>

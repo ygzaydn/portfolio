@@ -9,6 +9,10 @@ const useStyles = () => ({
     border: "1px solid #A4A4A4",
     padding: "2.5%",
     margin: "2.5%",
+    height: "20rem",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-evenly",
   },
   logoGrid: {
     "& svg": {
@@ -21,7 +25,7 @@ const useStyles = () => ({
 
 const ServiceCard = ({ title, description, logo, classes }) => {
   return (
-    <Grid item md={3} xs={5} className={classes.serviceCardGrid} key={title}>
+    <Grid item md={3} xs={9} className={classes.serviceCardGrid} key={title}>
       <Paper style={{ backgroundColor: "inherit" }}>
         <Grid container>
           <Grid item xs={12} className={classes.logoGrid}>

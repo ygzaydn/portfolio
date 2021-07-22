@@ -15,9 +15,10 @@ const useStyles = () => ({
   headerContainer: {
     padding: "min(5%,50px)",
     justifyContent: "space-between",
-    position: "sticky",
+    position: "absolute",
     alignItems: "center",
     top: 0,
+    backgroundColor: "black",
   },
   nameGrid: {
     display: "flex",
@@ -56,12 +57,16 @@ const Header = ({ classes, width, limit }) => {
   const scrollTo = (element) => {
     document
       .getElementById(`${element}`)
-      .scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+      .scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest",
+      });
     setAnchorEl(null);
   };
 
   return (
-    <Grid container className={classes.headerContainer}>
+    <Grid container className={classes.headerContainer} id="header">
       <Grid item xs={4} className={classes.nameGrid}>
         <Typography color="secondary">erolyagiz</Typography>
         <Typography color="error">aydin</Typography>
@@ -78,7 +83,7 @@ const Header = ({ classes, width, limit }) => {
           <Typography
             color="secondary"
             key="services-desktop"
-            onClick={() => scrollTo("services")}
+            onClick={() => scrollTo("services-desktop")}
           >
             Services
           </Typography>
@@ -123,7 +128,7 @@ const Header = ({ classes, width, limit }) => {
             <MenuItem
               style={{ borderBottom: "0.5px solid lightgray" }}
               key="services-mobile"
-              onClick={() => scrollTo("services")}
+              onClick={() => scrollTo("services-mobile")}
             >
               Services
             </MenuItem>
