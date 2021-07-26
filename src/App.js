@@ -3,13 +3,16 @@ import "./App.css";
 
 import Header from "./components/header/headerComponent";
 import Footer from "./components/footer/footerComponent";
+import ContactForm from "./components/contactForm/contactForm";
 
-import { Grid, Typography, Grow, TextField, Button } from "@material-ui/core";
+import { Grid, Typography, Grow } from "@material-ui/core";
 import { withStyles } from "@material-ui/core";
 import BackgroundImage from "./images/background.jpg";
 import { compose } from "recompose";
+
 import { withWindowProvider } from "./contexts/window/provider";
 import { withWindowConsumer } from "./contexts/window/consumer";
+
 import ServiceCard from "./components/serviceCard/serviceCard";
 import TechStack from "./components/techstack/techStack";
 import ProjectCard from "./components/projectCard/projectCard";
@@ -59,34 +62,9 @@ const useStyles = () => ({
     projectsContainer: {
         padding: "10% 2rem",
     },
-    contactContainer: {
-        padding: "10% 2rem",
-    },
-    contactGrid: {
-        display: "flex",
-        justifyContent: "center",
-        margin: "0.2rem 0",
-        alignItems: "center",
-    },
-    root: {
-        width: "50%",
-        maxWidth: "750px",
-        "& .MuiInputBase-root": {
-            color: "#A4A4A4",
-        },
-        "& .MuiInputBase-inpıt": {
-            color: "black",
-        },
-        "& .MuiFormLabel-root": {
-            color: "#A4A4A4",
-        },
-        "& .MuiInput-underline:before": {
-            borderBottomColor: "#A4A4A4",
-        },
-    },
 });
 
-const App = ({ classes, width, height }) => {
+const App = ({ classes, width, height, firebase }) => {
     const [services, setServices] = useState(false);
     const [stack, setStack] = useState(false);
     const [project, setProject] = useState(false);
@@ -279,69 +257,7 @@ const App = ({ classes, width, height }) => {
                     </Grid>
                 </Grow>
                 <Grow in={contact} disableStrictModeCompat>
-                    <Grid
-                        container
-                        className={classes.contactContainer}
-                        id="contact-desktop"
-                    >
-                        <Grid
-                            item
-                            xs={12}
-                            style={{ marginBottom: "5%" }}
-                            id="contact-mobile"
-                        >
-                            <Typography color="primary" variant="h2">
-                                Contact
-                            </Typography>
-                        </Grid>
-                        <Grid container style={{ height: "25rem" }}>
-                            <Grid item xs={12} className={classes.contactGrid}>
-                                <TextField
-                                    id="standard-basic"
-                                    label="Name"
-                                    color="primary"
-                                    required
-                                    className={classes.root}
-                                    classes={{
-                                        root: classes.root,
-                                    }}
-                                />
-                            </Grid>
-
-                            <Grid item xs={12} className={classes.contactGrid}>
-                                <TextField
-                                    id="standard-basic"
-                                    label="E-mail"
-                                    color="primary"
-                                    required
-                                    className={classes.root}
-                                    classes={{
-                                        root: classes.root,
-                                    }}
-                                />
-                            </Grid>
-
-                            <Grid item xs={12} className={classes.contactGrid}>
-                                <TextField
-                                    id="standard-basic"
-                                    label="Message"
-                                    color="primary"
-                                    required
-                                    multiline
-                                    rows={3}
-                                    className={classes.root}
-                                    classes={{
-                                        root: classes.root,
-                                    }}
-                                />
-                            </Grid>
-                            <Grid item xs={12} className={classes.contactGrid}>
-                                <Button variant="contained" color="primary">
-                                    Send
-                                </Button>
-                            </Grid>
-                        </Grid>
-                    </Grid>
+                    <ContactForm />
                 </Grow>
             </Grid>
             <Footer />
