@@ -44,14 +44,17 @@ const useStyles = () => ({
             borderBottomColor: "#A4A4A4",
         },
     },
-    dialogBox:{
-        '& .MuiDialog-paperScrollPaper':{
-            backgroundColor:'black',
-            border:'0.2px solid lightgray'
-        }
-        
-    }
-   
+    dialogBox: {
+        "& .MuiDialog-paperScrollPaper": {
+            backgroundColor: "black",
+            border: "0.2px solid lightgray",
+        },
+    },
+    button: {
+        "&.Mui-disabled": {
+            backgroundColor: "#4BFFA5",
+        },
+    },
 });
 
 const ContactForm = ({ classes, firebase }) => {
@@ -184,15 +187,16 @@ const ContactForm = ({ classes, firebase }) => {
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                    <Typography color="secondary" variant="subtitle1">
-                        I have received your message, you will get an e-mail as a response.
-                    </Typography>
-                     
+                        <Typography color="secondary" variant="subtitle1">
+                            I have received your message, you will get an e-mail
+                            as a response.
+                        </Typography>
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
-Close                    </Button>
+                        Close{" "}
+                    </Button>
                 </DialogActions>
             </Dialog>
         </Grid>
