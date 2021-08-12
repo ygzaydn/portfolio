@@ -126,6 +126,71 @@ const App = ({ classes, width, height, firebase }) => {
         animation("stack");
         animation("project");
         animation("contact");
+
+        const servicesPos =
+            document.getElementById("services-desktop").offsetTop;
+        const stackPos = document.getElementById("stack-desktop").offsetTop;
+        const projectPos = document.getElementById("project-desktop").offsetTop;
+        const contactPos = document.getElementById("contact-desktop").offsetTop;
+        const height = window.innerHeight / 10;
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY < servicesPos - height) {
+                document.getElementById("header-home").style.color = "white";
+                document.getElementById("header-services").style.color =
+                    "#A4A4A4";
+                document.getElementById("header-stack").style.color = "#A4A4A4";
+                document.getElementById("header-projects").style.color =
+                    "#A4A4A4";
+                document.getElementById("header-contacts").style.color =
+                    "#A4A4A4";
+            } else if (
+                servicesPos - height < window.scrollY &&
+                window.scrollY < stackPos - height
+            ) {
+                document.getElementById("header-home").style.color = "#A4A4A4";
+                document.getElementById("header-services").style.color =
+                    "white";
+                document.getElementById("header-stack").style.color = "#A4A4A4";
+                document.getElementById("header-projects").style.color =
+                    "#A4A4A4";
+                document.getElementById("header-contacts").style.color =
+                    "#A4A4A4";
+            } else if (
+                stackPos - height < window.scrollY &&
+                window.scrollY < projectPos - height
+            ) {
+                document.getElementById("header-home").style.color = "#A4A4A4";
+                document.getElementById("header-services").style.color =
+                    "#A4A4A4";
+                document.getElementById("header-stack").style.color = "white";
+                document.getElementById("header-projects").style.color =
+                    "#A4A4A4";
+                document.getElementById("header-contacts").style.color =
+                    "#A4A4A4";
+            } else if (
+                projectPos - height < window.scrollY &&
+                window.scrollY < contactPos - height * 3
+            ) {
+                document.getElementById("header-home").style.color = "#A4A4A4";
+                document.getElementById("header-services").style.color =
+                    "#A4A4A4";
+                document.getElementById("header-stack").style.color = "#A4A4A4";
+                document.getElementById("header-projects").style.color =
+                    "white";
+                document.getElementById("header-contacts").style.color =
+                    "#A4A4A4";
+            } else if (contactPos - height < window.scrollY) {
+                document.getElementById("header-home").style.color = "#A4A4A4";
+                document.getElementById("header-services").style.color =
+                    "#A4A4A4";
+                document.getElementById("header-stack").style.color = "#A4A4A4";
+                document.getElementById("header-projects").style.color =
+                    "#A4A4A4";
+                document.getElementById("header-contacts").style.color =
+                    "white";
+            }
+        });
     }, []);
 
     return (

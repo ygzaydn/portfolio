@@ -57,9 +57,10 @@ const Header = ({ classes, width, limit }) => {
     };
 
     const scrollTo = (element) => {
+        console.log("offset" + document.getElementById(`${element}`).offsetTop);
         document.getElementById(`${element}`).scrollIntoView({
             behavior: "smooth",
-            block: "center",
+            block: element !== "project-desktop" ? "center" : "start",
             inline: "nearest",
         });
         setAnchorEl(null);
@@ -93,6 +94,7 @@ const Header = ({ classes, width, limit }) => {
                     <Typography
                         color="secondary"
                         key="home-desktop"
+                        id="header-home"
                         onClick={() => scrollTo("home")}
                     >
                         Home
@@ -100,6 +102,7 @@ const Header = ({ classes, width, limit }) => {
                     <Typography
                         color="secondary"
                         key="services-desktop"
+                        id="header-services"
                         onClick={() => scrollTo("services-desktop")}
                     >
                         Services
@@ -107,6 +110,7 @@ const Header = ({ classes, width, limit }) => {
                     <Typography
                         color="secondary"
                         key="stack-desktop"
+                        id="header-stack"
                         onClick={() => scrollTo("stack-desktop")}
                     >
                         Tech
@@ -114,14 +118,16 @@ const Header = ({ classes, width, limit }) => {
                     <Typography
                         color="secondary"
                         key="project-desktop"
-                        onClick={() => scrollTo("project-mobile")}
+                        id="header-projects"
+                        onClick={() => scrollTo("project-desktop")}
                     >
                         Projects
                     </Typography>
                     <Typography
                         color="secondary"
                         key="contact-desktop"
-                        onClick={() => scrollTo("contact-mobile")}
+                        id="header-contacts"
+                        onClick={() => scrollTo("contact-desktop")}
                     >
                         Contacts
                     </Typography>
