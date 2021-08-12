@@ -98,8 +98,6 @@ const ContactForm = ({ classes, firebase }) => {
         return false;
     };
 
-    console.log(firebase);
-
     return (
         <Grid
             container

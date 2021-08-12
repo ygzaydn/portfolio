@@ -10,13 +10,11 @@ import theme from "./theme/theme";
 import Firebase, { FirebaseContext } from "./contexts/firebase/";
 
 ReactDOM.render(
-    <React.StrictMode>
-        <FirebaseContext.Provider value={new Firebase()}>
-            <ThemeProvider theme={theme}>
-                <App />
-            </ThemeProvider>
-        </FirebaseContext.Provider>
-    </React.StrictMode>,
+    <FirebaseContext.Provider value={new Firebase()}>
+        <ThemeProvider theme={theme}>
+            <App />
+        </ThemeProvider>
+    </FirebaseContext.Provider>,
     document.getElementById("root")
 );
 

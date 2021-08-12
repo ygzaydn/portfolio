@@ -102,9 +102,22 @@ const Footer = ({ classes, limit, width }) => {
                 className={classes.socialIcon}
                 id="socialIcon"
             >
-                <LinkedInIcon />
-                <GitHubIcon />
-                <TwitterIcon />
+                <LinkedInIcon
+                    onClick={() => {
+                        window.location.href =
+                            "https://tr.linkedin.com/in/erol-ya%C4%9F%C4%B1z-ayd%C4%B1n-208517a9";
+                    }}
+                />
+                <GitHubIcon
+                    onClick={() => {
+                        window.location.href = "https://github.com/ygzaydn";
+                    }}
+                />
+                <TwitterIcon
+                    onClick={() => {
+                        window.location.href = "https://twitter.com/aydnygz";
+                    }}
+                />
             </Grid>
         </Grid>
     );

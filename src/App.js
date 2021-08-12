@@ -221,7 +221,7 @@ const App = ({ classes, width, height, firebase }) => {
                         <Grid item xs={12} className={classes.projectsGrid}>
                             <ProjectCard
                                 title="Icecrown Boost Community"
-                                description="ICC Boost Community"
+                                description="Icecrown boost community is one of the largest EU gold boost communities in video game World of Warcraft (WoW), housing some of the best players & guilds in the world "
                                 image={ICCImage}
                                 tech="Javascript - React - Redux - Firebase - Material UI - Node.js"
                                 link="https://shop-dot-pro-boost-test-env.ey.r.appspot.com/"
@@ -230,27 +230,29 @@ const App = ({ classes, width, height, firebase }) => {
                         <Grid item xs={12} className={classes.projectsGrid}>
                             <ProjectCard
                                 title="Librejournal"
-                                description="Librejournal"
+                                description="Librejournal is a social media platform for local journalists. You can easily share stories about the events around you to react people. "
                                 image={LibrejournalImage}
                                 tech="Javascript - React - Redux - MongoDB - Material UI - Node.js"
+                                note=" Project is run on heroku, so it may not be loaded at first try, if this happens, please try to refresh page."
                                 link="http://librejournal-fe.herokuapp.com/"
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.projectsGrid}>
                             <ProjectCard
                                 title="Mell Beautiy Center"
-                                description="Mell Beautiy Center"
+                                description="Mell Beautiy Center is a beautiy center that located at İzmir / Turkey. This is the official website for the business."
                                 image={MellImage}
                                 tech="Javascript - React - Firebase - Material UI"
-                                link="http://mellguzellikmerkezi.com/"
+                                link="https://mellguzellikmerkezi.com/"
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.projectsGrid}>
                             <ProjectCard
                                 title="Ride'n'Rate"
-                                description="Ride'n'Rate"
+                                description="Ride'n'Rate is a platform for users to evaluate their trips. Users can check those evaluations & ratings for future trips to have a better time on travel."
                                 image={RidenrateImage}
                                 tech="Javascript - HTML - CSS"
+                                note=" Project is run on heroku, so it may not be loaded at first try, if this happens, please try to refresh page."
                                 link="http://ridenrate.herokuapp.com/"
                             />
                         </Grid>

@@ -31,14 +31,14 @@ const useStyles = () => ({
   },
 });
 
-const ProjectCard = ({ classes, title, description, image, tech, link }) => {
+const ProjectCard = ({ classes, title, description, image, tech, link, note }) => {
   return (
     <Card className={classes.root}>
       <Grid container>
-        <Grid item md={8} xs={12}>
+        <Grid item md={7} xs={12}>
           <CardMedia className={classes.cover} image={image} title={title} />
         </Grid>
-        <Grid item md={4} xs={12}>
+        <Grid item md={5} xs={12}>
           <CardContent className={classes.content}>
             <Typography color="primary" variant="h4">
               {title}
@@ -49,6 +49,9 @@ const ProjectCard = ({ classes, title, description, image, tech, link }) => {
             <Typography variant="subtitle1" color="secondary">
               <strong>Stack:</strong> {tech}
             </Typography>
+            {typeof(note) !== undefined && <Typography variant="subtitle1" color="secondary">
+              <strong>Note:</strong> {note}
+            </Typography>}
             <Typography
               variant="h6"
               color="primary"
