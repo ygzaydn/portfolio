@@ -49,7 +49,7 @@ const ProjectCard = ({ classes, title, description, image, tech, link, note }) =
             <Typography variant="subtitle1" color="secondary">
               <strong>Stack:</strong> {tech}
             </Typography>
-            {typeof(note) !== undefined && <Typography variant="subtitle1" color="secondary">
+            {note && <Typography variant="subtitle1" color="secondary">
               <strong>Note:</strong> {note}
             </Typography>}
             <Typography

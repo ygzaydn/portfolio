@@ -25,6 +25,7 @@ import ICCImage from "./images/icc.jpg";
 import RidenrateImage from "./images/ridenrate.jpg";
 import MellImage from "./images/mell.jpg";
 import LibrejournalImage from "./images/librejournal.jpg";
+import CrownImage from "./images/CrownImage.png";
 
 const useStyles = () => ({
     homepageContainer: {
@@ -203,8 +204,7 @@ const App = ({ classes, width, height, firebase }) => {
                         <strong style={{ color: "#4BFFA5" }}>
                             erolyagizaydin
                         </strong>
-                        , UX/UI Designer and Front-End Developer Based in
-                        Turkey.
+                        , React Developer Based in Turkey.
                     </Typography>
                 </Grid>
                 <Grow in={services} disableStrictModeCompat>
@@ -288,7 +288,7 @@ const App = ({ classes, width, height, firebase }) => {
                                 title="Icecrown Boost Community"
                                 description="Icecrown boost community is one of the largest EU gold boost communities in video game World of Warcraft (WoW), housing some of the best players & guilds in the world "
                                 image={ICCImage}
-                                tech="Javascript - React - Redux - Firebase - Material UI - Node.js"
+                                tech="Javascript - React - Firebase - Material UI - Node.js"
                                 link="https://shop-dot-pro-boost-test-env.ey.r.appspot.com/"
                             />
                         </Grid>
@@ -300,6 +300,16 @@ const App = ({ classes, width, height, firebase }) => {
                                 tech="Javascript - React - Redux - MongoDB - Material UI - Node.js"
                                 note=" Project is run on heroku, so it may not be loaded at first try, if this happens, please try to refresh page."
                                 link="http://librejournal-fe.herokuapp.com/"
+                            />
+                        </Grid>
+                        <Grid item xs={12} className={classes.projectsGrid}>
+                            <ProjectCard
+                                title="Crown Clothing"
+                                description="Crown Clothing is a mimic of e-commerce website that is completely build on React."
+                                image={CrownImage}
+                                tech="Javascript - React - Firebase - Redux - Sass"
+                                note=" Project is run on heroku, so it may not be loaded at first try, if this happens, please try to refresh page."
+                                link="https://crown-clothing-fe.herokuapp.com/"
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.projectsGrid}>
