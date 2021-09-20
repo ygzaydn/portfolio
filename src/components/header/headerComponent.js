@@ -67,6 +67,19 @@ const Header = ({ classes, width, limit }) => {
     };
 
     useEffect(() => {
+        let y = window.pageYOffset;
+        let header = document.getElementById("header");
+        if (y) {
+            header.style.backgroundColor = "black";
+            header.style.borderBottom = "0.2px solid lightgray";
+            header.style.padding = "min(3.5%,35px)";
+            header.style.zIndex = "50";
+        } else {
+            header.style.backgroundColor = "inherit";
+            header.style.borderBottom = "none";
+            header.style.padding = "min(5%,50px)";
+        }
+
         window.addEventListener("scroll", () => {
             let y = window.pageYOffset;
             let header = document.getElementById("header");

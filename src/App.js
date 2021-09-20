@@ -90,6 +90,9 @@ const App = ({ classes, width, height, firebase }) => {
                 case "project":
                     setProject(true);
                     break;
+                case "contact":
+                    setContact(true);
+                    break;
                 default:
                     break;
             }
@@ -135,61 +138,41 @@ const App = ({ classes, width, height, firebase }) => {
         const contactPos = document.getElementById("contact-desktop").offsetTop;
         const height = window.innerHeight / 10;
 
+        const headerElements = {
+            home: document.getElementById("header-home"),
+            services: document.getElementById("header-services"),
+            stack: document.getElementById("header-stack"),
+            projects: document.getElementById("header-projects"),
+            contact: document.getElementById("header-contacts"),
+        };
+
+        const changeColorOfHeaderElement = (element) => {
+            Object.keys(headerElements).forEach((el) => {
+                headerElements[el].style.color = "#A4A4A4";
+            });
+            headerElements[element].style.color = "white";
+        };
+
         window.addEventListener("scroll", () => {
             if (window.scrollY < servicesPos - height) {
-                document.getElementById("header-home").style.color = "white";
-                document.getElementById("header-services").style.color =
-                    "#A4A4A4";
-                document.getElementById("header-stack").style.color = "#A4A4A4";
-                document.getElementById("header-projects").style.color =
-                    "#A4A4A4";
-                document.getElementById("header-contacts").style.color =
-                    "#A4A4A4";
+                changeColorOfHeaderElement("home");
             } else if (
                 servicesPos - height < window.scrollY &&
                 window.scrollY < stackPos - height
             ) {
-                document.getElementById("header-home").style.color = "#A4A4A4";
-                document.getElementById("header-services").style.color =
-                    "white";
-                document.getElementById("header-stack").style.color = "#A4A4A4";
-                document.getElementById("header-projects").style.color =
-                    "#A4A4A4";
-                document.getElementById("header-contacts").style.color =
-                    "#A4A4A4";
+                changeColorOfHeaderElement("services");
             } else if (
                 stackPos - height < window.scrollY &&
                 window.scrollY < projectPos - height
             ) {
-                document.getElementById("header-home").style.color = "#A4A4A4";
-                document.getElementById("header-services").style.color =
-                    "#A4A4A4";
-                document.getElementById("header-stack").style.color = "white";
-                document.getElementById("header-projects").style.color =
-                    "#A4A4A4";
-                document.getElementById("header-contacts").style.color =
-                    "#A4A4A4";
+                changeColorOfHeaderElement("stack");
             } else if (
                 projectPos - height < window.scrollY &&
                 window.scrollY < contactPos - height * 3
             ) {
-                document.getElementById("header-home").style.color = "#A4A4A4";
-                document.getElementById("header-services").style.color =
-                    "#A4A4A4";
-                document.getElementById("header-stack").style.color = "#A4A4A4";
-                document.getElementById("header-projects").style.color =
-                    "white";
-                document.getElementById("header-contacts").style.color =
-                    "#A4A4A4";
+                changeColorOfHeaderElement("projects");
             } else if (contactPos - height < window.scrollY) {
-                document.getElementById("header-home").style.color = "#A4A4A4";
-                document.getElementById("header-services").style.color =
-                    "#A4A4A4";
-                document.getElementById("header-stack").style.color = "#A4A4A4";
-                document.getElementById("header-projects").style.color =
-                    "#A4A4A4";
-                document.getElementById("header-contacts").style.color =
-                    "white";
+                changeColorOfHeaderElement("contact");
             }
         });
     }, []);
