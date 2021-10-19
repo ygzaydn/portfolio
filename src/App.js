@@ -272,7 +272,7 @@ const App = ({ classes, width, height, firebase }) => {
                                 description="Icecrown boost community is one of the largest EU gold boost communities in video game World of Warcraft (WoW), housing some of the best players & guilds in the world "
                                 image={ICCImage}
                                 tech="Javascript - React - Firebase - Material UI - Node.js"
-                                link="https://shop-dot-pro-boost-test-env.ey.r.appspot.com/"
+                                link="https://icc-website-dc881.web.app"
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.projectsGrid}>
