@@ -26,6 +26,8 @@ import RidenrateImage from "./images/ridenrate.jpg";
 import MellImage from "./images/mell.jpg";
 import LibrejournalImage from "./images/librejournal.jpg";
 import CrownImage from "./images/CrownImage.png";
+import GoldenLotusImage from "./images/goldenlotus.png";
+import TodoImage from "./images/todo.png";
 
 const useStyles = () => ({
     homepageContainer: {
@@ -268,6 +270,15 @@ const App = ({ classes, width, height, firebase }) => {
                         </Grid>
                         <Grid item xs={12} className={classes.projectsGrid}>
                             <ProjectCard
+                                title="Golden Lotus Boost Community"
+                                description="Golden Lotus boost community is one of the largest EU gold boost communities in video game World of Warcraft (WoW), housing some of the best players & guilds in the world "
+                                image={GoldenLotusImage}
+                                tech="Javascript - React - Firebase - Material UI"
+                                link="https://goldenlotus-website.web.app/"
+                            />
+                        </Grid>
+                        <Grid item xs={12} className={classes.projectsGrid}>
+                            <ProjectCard
                                 title="Icecrown Boost Community"
                                 description="Icecrown boost community is one of the largest EU gold boost communities in video game World of Warcraft (WoW), housing some of the best players & guilds in the world "
                                 image={ICCImage}
@@ -312,6 +323,15 @@ const App = ({ classes, width, height, firebase }) => {
                                 tech="Javascript - HTML - CSS"
                                 note=" Project is run on heroku, so it may not be loaded at first try, if this happens, please try to refresh page."
                                 link="http://ridenrate.herokuapp.com/"
+                            />
+                        </Grid>
+                        <Grid item xs={12} className={classes.projectsGrid}>
+                            <ProjectCard
+                                title="Todo app"
+                                description="Simple todo app that build with the help of typescript, redux and saas."
+                                image={TodoImage}
+                                tech="Redux - Typescript - Sass"
+                                link="https://ygzaydn.github.io/todo"
                             />
                         </Grid>
                     </Grid>
