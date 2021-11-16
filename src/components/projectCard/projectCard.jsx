@@ -56,7 +56,7 @@ const ProjectCard = ({ classes, title, description, image, tech, link, note }) =
               variant="h6"
               color="primary"
               onClick={() => {
-                window.location.href = link;
+                window.open(link);
               }}
               style={{ cursor: "pointer" }}
             >
