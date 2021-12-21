@@ -18,13 +18,15 @@ export const withWindowProvider = (Component) => {
         const [dimension, setDimension] = useState({
             width: props.width || getDimensions().width,
             height: props.height || getDimensions().height,
-            limit: props.limit || getDimensions().limit
+            limit: props.limit || getDimensions().limit,
+            maxWidth: 1400,
         });
         const updateDimensions = () => {
             setDimension({
                 width: props.width || getDimensions().width,
                 height: props.height || getDimensions().height,
-                limit: props.limit || getDimensions().limit
+                limit: props.limit || getDimensions().limit,
+                maxWidth: 1400,
             });
         };
 
