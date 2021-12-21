@@ -61,7 +61,7 @@ const useStyles = () => ({
     padding: "10% 0 ",
     justifyContent: "space-around",
     alignItems: "center",
-    background: "#4B6587",
+    background: "#604B6587",
     clipPath: "polygon(0 15%,100% 0, 100% 85%, 0 100%)",
   },
   serviceContainerMaxWidthGrid: {
@@ -252,9 +252,7 @@ const App = ({ classes, width, height, firebase }) => {
                 style={{ marginBottom: "5%" }}
                 id="stack-mobile"
               >
-                <Typography color="primary" variant="h2">
-                  Tech Stack
-                </Typography>
+                <Typography variant="h2">Tech Stack</Typography>
               </Grid>
               <Grid item xs={12}>
                 <TechStack />
