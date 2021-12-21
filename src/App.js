@@ -7,7 +7,7 @@ import ContactForm from "./components/contactForm/contactForm";
 
 import { Grid, Typography, Grow } from "@material-ui/core";
 import { withStyles } from "@material-ui/core";
-import BackgroundImage from "./images/background3.jpg";
+import BackgroundImage from "./images/background4.jpg";
 import { compose } from "recompose";
 
 import { withWindowProvider } from "./contexts/window/provider";
