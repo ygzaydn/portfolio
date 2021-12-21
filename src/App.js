@@ -57,6 +57,13 @@ const useStyles = () => ({
     justifyContent: "space-around",
     alignItems: "center",
   },
+  techContainer: {
+    padding: "10% 0 ",
+    justifyContent: "space-around",
+    alignItems: "center",
+    background: "#4B6587",
+    clipPath: "polygon(0 15%,100% 0, 100% 85%, 0 100%)",
+  },
   serviceContainerMaxWidthGrid: {
     margin: "auto",
     maxWidth: (props) => props.maxWidth,
@@ -237,11 +244,7 @@ const App = ({ classes, width, height, firebase }) => {
           </Grid>
         </Grow>
         <Grow in={stack} disableStrictModeCompat>
-          <Grid
-            container
-            className={classes.serviceContainer}
-            id="stack-desktop"
-          >
+          <Grid container className={classes.techContainer} id="stack-desktop">
             <Grid container className={classes.serviceContainerMaxWidthGrid}>
               <Grid
                 item
