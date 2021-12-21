@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Grid, Paper, Typography, withStyles } from "@material-ui/core";
+import { Grid, Typography, withStyles } from "@material-ui/core";
 import { compose } from "recompose";
 import { withWindowConsumer } from "../../contexts/window/consumer";
 
@@ -15,6 +15,12 @@ const useStyles = () => ({
     flexDirection: "column",
     justifyContent: "space-evenly",
     transition:"all .5s ",
+    "& svg": {
+      fill: "#4B6587",
+      height: "50px",
+      width: "50px",
+      transition:"all .5s ",
+    },
     "&:hover":{
       background:"#4B6587",
       color:'white',
@@ -22,15 +28,11 @@ const useStyles = () => ({
         fill: "white",
         transform:"scale(1.25)"
       },
+
     }
   },
   logoGrid: {
     padding:"2vh 0",
-    "& svg": {
-      fill: "#4B6587",
-      height: "50px",
-      width: "50px",
-    },
   },
 });
 

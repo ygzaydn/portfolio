@@ -12,6 +12,10 @@ const theme = createTheme({
       main: "#FFFFFF",
     },
   },
+  typography: {
+    "fontFamily": `-webkit-pictograph`,
+
+   }
 });
 
 export default theme;

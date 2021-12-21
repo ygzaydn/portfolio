@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Typography, Grid, withStyles } from "@material-ui/core";
+import React from "react";
+import { Grid, withStyles } from "@material-ui/core";
 
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import GitHubIcon from "@material-ui/icons/GitHub";

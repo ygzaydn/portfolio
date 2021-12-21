@@ -61,6 +61,7 @@ const Header = ({ classes, width, limit }) => {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const scrollTo = (element) => {
     console.log("offset" + document.getElementById(`${element}`).offsetTop);
     document.getElementById(`${element}`).scrollIntoView({

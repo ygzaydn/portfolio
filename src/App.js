@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./App.css";
 
 import Header from "./components/header/headerComponent";
 import Footer from "./components/footer/footerComponent";
 import ContactForm from "./components/contactForm/contactForm";
 
-import { Grid, Typography, Grow } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core";
-import BackgroundImage from "./images/background4.jpg";
+import BackgroundImage from "./images/background6.jpg";
 import { compose } from "recompose";
 
 import { withWindowProvider } from "./contexts/window/provider";
@@ -31,15 +31,16 @@ import TodoImage from "./images/todo.png";
 
 const useStyles = () => ({
   homepageContainer: {
-    flexDirection: "column",
-    height: "100%",
+    flexDirection: "row",
+    height: "60%",
     backgroundImage: `url(${BackgroundImage})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "top",
-    justifyContent: "flex-end",
+    backgroundPosition: "center",
+    justifyContent: "center",
     alignItems: "center",
     padding: "min(35%,150px) 0",
+    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 75%)",
     "& h6": {
       maxWidth: (props) => (props.width < props.limit ? "80%" : "50%"),
     },
@@ -53,7 +54,7 @@ const useStyles = () => ({
     height: "10%",
   },
   serviceContainer: {
-    padding: "10% 0 ",
+    padding: "5% 0 ",
     justifyContent: "space-around",
     alignItems: "center",
   },
@@ -61,7 +62,7 @@ const useStyles = () => ({
     padding: "10% 0 ",
     justifyContent: "space-around",
     alignItems: "center",
-    background: "#604B6587",
+    background: "#604B6521",
     clipPath: "polygon(0 15%,100% 0, 100% 85%, 0 100%)",
   },
   serviceContainerMaxWidthGrid: {
@@ -76,207 +77,117 @@ const useStyles = () => ({
     margin: "0.2rem 0",
   },
   projectsContainer: {
-    padding: "10% 2rem",
+    padding: "5% 2rem",
   },
 });
 
 const App = ({ classes, width, height, firebase }) => {
-  const [services, setServices] = useState(false);
-  const [stack, setStack] = useState(false);
-  const [project, setProject] = useState(false);
-  const [contact, setContact] = useState(false);
-
-  const animation = (id) => {
-    const element = document.getElementById(`${id}-desktop`);
-
-    const elementDimension = element.getBoundingClientRect();
-    let y = window.pageYOffset;
-
-    let nec = y - elementDimension.y + 500;
-
-    if (nec > 0) {
-      switch (id) {
-        case "services":
-          setServices(true);
-          break;
-        case "stack":
-          setStack(true);
-          break;
-        case "project":
-          setProject(true);
-          break;
-        case "contact":
-          setContact(true);
-          break;
-        default:
-          break;
-      }
-    }
-
-    window.addEventListener("scroll", () => {
-      const element = document.getElementById(`${id}-desktop`);
-
-      const elementDimension = element.getBoundingClientRect();
-      let y = window.pageYOffset;
-
-      let nec = y - elementDimension.y + 250;
-      if (nec > 0)
-        switch (id) {
-          case "services":
-            setServices(true);
-            break;
-          case "stack":
-            setStack(true);
-            break;
-          case "project":
-            setProject(true);
-            break;
-          case "contact":
-            setContact(true);
-            break;
-          default:
-            break;
-        }
-    });
-  };
-
-  useEffect(() => {
-    animation("services");
-    animation("stack");
-    animation("project");
-    animation("contact");
-
-    const servicesPos = document.getElementById("services-desktop").offsetTop;
-    const stackPos = document.getElementById("stack-desktop").offsetTop;
-    const projectPos = document.getElementById("project-desktop").offsetTop;
-    const contactPos = document.getElementById("contact-desktop").offsetTop;
-    const height = window.innerHeight / 10;
-
-    const headerElements = {
-      home: document.getElementById("header-home"),
-      services: document.getElementById("header-services"),
-      stack: document.getElementById("header-stack"),
-      projects: document.getElementById("header-projects"),
-      contact: document.getElementById("header-contacts"),
-    };
-
-    const changeColorOfHeaderElement = (element) => {
-      Object.keys(headerElements).forEach((el) => {
-        headerElements[el].style.color = "#A4A4A4";
-      });
-      headerElements[element].style.color = "white";
-    };
-
-    window.addEventListener("scroll", () => {
-      if (window.scrollY < servicesPos - height) {
-        changeColorOfHeaderElement("home");
-      } else if (
-        servicesPos - height < window.scrollY &&
-        window.scrollY < stackPos - height
-      ) {
-        changeColorOfHeaderElement("services");
-      } else if (
-        stackPos - height < window.scrollY &&
-        window.scrollY < projectPos - height
-      ) {
-        changeColorOfHeaderElement("stack");
-      } else if (
-        projectPos - height < window.scrollY &&
-        window.scrollY < contactPos - height * 3
-      ) {
-        changeColorOfHeaderElement("projects");
-      } else if (contactPos - height < window.scrollY) {
-        changeColorOfHeaderElement("contact");
-      }
-    });
-  }, []);
-
   return (
     <Grid container>
       <Header />
       <Grid container style={{ height: "100vh" }}>
         <Grid container className={classes.homepageContainer} id="home">
-          <Typography color="error" variant="h6">
-            Hello I'm{" "}
-            <strong style={{ color: "#4BFFA5" }}>erolyagizaydin</strong>, React
-            Developer Based in Turkey.
-          </Typography>
+          <Grid
+            item
+            xs={6}
+            style={{
+              height: "100%",
+              paddingLeft: "30%",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Typography
+              variant="h3"
+              style={{ color: "white", textAlign: "start" }}
+            >
+              Hello I'm
+              <br />
+              <strong
+                style={{
+                  color: "rgb(75, 202, 135)",
+                  fontWeight: "600",
+                  fontSize: "4.5rem",
+                }}
+              >
+                erolyagizaydin
+              </strong>
+              <br />
+              web developer
+            </Typography>
+          </Grid>
+          <Grid item xs={6} />
         </Grid>
-        <Grow in={services} disableStrictModeCompat>
-          <Grid
-            container
-            className={classes.serviceContainer}
-            id="services-desktop"
-          >
-            <Grid container className={classes.serviceContainerMaxWidthGrid}>
-              <Grid
-                item
-                xs={12}
-                style={{ marginBottom: "5%" }}
-                id="services-mobile"
-              >
-                <Typography color="primary" variant="h2">
-                  Services
-                </Typography>
-              </Grid>
-              <ServiceCard
-                logo={<CodeIcon />}
-                title={"Web Apps"}
-                description={
-                  "I develop dedicated software and applications with an efficient and functional front-end library - React."
-                }
-              />
-              <ServiceCard
-                logo={<DeveloperModeIcon />}
-                title={"Responsive Design"}
-                description={
-                  "I develop web-apps in responsive manner. Productions that I've created are responsive for different devices."
-                }
-              />
-              <ServiceCard
-                logo={<ColorizeIcon />}
-                title={"UI/UX Development"}
-                description={
-                  "I develop cutting-edge wireframes for your needs. "
-                }
-              />
-            </Grid>
-          </Grid>
-        </Grow>
-        <Grow in={stack} disableStrictModeCompat>
-          <Grid container className={classes.techContainer} id="stack-desktop">
-            <Grid container className={classes.serviceContainerMaxWidthGrid}>
-              <Grid
-                item
-                xs={12}
-                style={{ marginBottom: "5%" }}
-                id="stack-mobile"
-              >
-                <Typography variant="h2">Tech Stack</Typography>
-              </Grid>
-              <Grid item xs={12}>
-                <TechStack />
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grow>
-        <Grow in={project} disableStrictModeCompat>
-          <Grid
-            container
-            className={classes.projectsContainer}
-            id="project-desktop"
-          >
+        <Grid
+          container
+          className={classes.serviceContainer}
+          id="services-desktop"
+        >
+          <Grid container className={classes.serviceContainerMaxWidthGrid}>
             <Grid
               item
               xs={12}
               style={{ marginBottom: "5%" }}
-              id="project-mobile"
+              id="services-mobile"
             >
               <Typography color="primary" variant="h2">
-                Projects
+                Services
               </Typography>
             </Grid>
-            <Grid item xs={12} className={classes.projectsGrid}>
+            <ServiceCard
+              logo={<CodeIcon />}
+              title={"Web Apps"}
+              description={
+                "I develop dedicated software and applications with an efficient and functional front-end library - React."
+              }
+            />
+            <ServiceCard
+              logo={<DeveloperModeIcon />}
+              title={"Responsive Design"}
+              description={
+                "I develop web-apps in responsive manner. Productions that I've created are responsive for different devices."
+              }
+            />
+            <ServiceCard
+              logo={<ColorizeIcon />}
+              title={"UI/UX Development"}
+              description={"I develop cutting-edge wireframes for your needs. "}
+            />
+          </Grid>
+        </Grid>
+
+        <Grid container className={classes.techContainer} id="stack-desktop">
+          <Grid container className={classes.serviceContainerMaxWidthGrid}>
+            <Grid item xs={12} style={{ marginBottom: "5%" }} id="stack-mobile">
+              <Typography variant="h2" color="primary">
+                Tech Stack
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <TechStack />
+            </Grid>
+          </Grid>
+        </Grid>
+
+        <Grid
+          container
+          className={`${classes.projectsContainer} ${classes.serviceContainerMaxWidthGrid}`}
+          id="project-desktop"
+        >
+          <Grid item xs={12} style={{ marginBottom: "5%" }} id="project-mobile">
+            <Typography color="primary" variant="h2">
+              Projects
+            </Typography>
+          </Grid>
+          <Grid
+            container
+            style={{
+              display: "grid",
+              "grid-template-columns": "2fr 2fr 2fr",
+              "grid-template-rows": "2fr 2fr 2fr",
+            }}
+          >
+            <Grid className={classes.projectsGrid}>
               <ProjectCard
                 title="Golden Lotus Boost Community"
                 description="Golden Lotus boost community is one of the largest EU gold boost communities in video game World of Warcraft (WoW), housing some of the best players & guilds in the world "
@@ -285,7 +196,7 @@ const App = ({ classes, width, height, firebase }) => {
                 link="https://goldenlotus-website.web.app/"
               />
             </Grid>
-            <Grid item xs={12} className={classes.projectsGrid}>
+            <Grid className={classes.projectsGrid}>
               <ProjectCard
                 title="Icecrown Boost Community"
                 description="Icecrown boost community is one of the largest EU gold boost communities in video game World of Warcraft (WoW), housing some of the best players & guilds in the world "
@@ -294,7 +205,7 @@ const App = ({ classes, width, height, firebase }) => {
                 link="https://icc-website-dc881.web.app"
               />
             </Grid>
-            <Grid item xs={12} className={classes.projectsGrid}>
+            <Grid className={classes.projectsGrid}>
               <ProjectCard
                 title="Librejournal"
                 description="Librejournal is a social media platform for local journalists. You can easily share stories about the events around you to react people. "
@@ -304,7 +215,7 @@ const App = ({ classes, width, height, firebase }) => {
                 link="http://librejournal-fe.herokuapp.com/"
               />
             </Grid>
-            <Grid item xs={12} className={classes.projectsGrid}>
+            <Grid className={classes.projectsGrid}>
               <ProjectCard
                 title="Crown Clothing"
                 description="Crown Clothing is a mimic of e-commerce website that is completely build on React."
@@ -343,10 +254,8 @@ const App = ({ classes, width, height, firebase }) => {
               />
             </Grid>
           </Grid>
-        </Grow>
-        <Grow in={contact} disableStrictModeCompat>
-          <ContactForm />
-        </Grow>
+        </Grid>
+        <ContactForm />
       </Grid>
       <Footer />
     </Grid>

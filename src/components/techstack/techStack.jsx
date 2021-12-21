@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 import {
   Grid,
   withStyles,
-  Typography,
 } from "@material-ui/core";
 import { compose } from "recompose";
 import { withWindowConsumer } from "../../contexts/window/consumer";
@@ -27,6 +26,12 @@ const useStyles = () => ({
     "& svg":{
       height:'4rem',
       width:'auto',
+      transition:"all .5s",
+    },
+    "&:hover":{
+      "& svg":{
+        transform: "scale(2)"
+      }
     }
   }
 });
