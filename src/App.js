@@ -327,7 +327,7 @@ const App = ({ classes, width, height, firebase, limit }) => {
                     <Typography
                         color="primary"
                         variant={limit > width ? "h4" : "h2"}
-                        style={{ marginBottom: "2rem" }}
+                        style={{ margin: "2rem 0 " }}
                     >
                         Contact
                     </Typography>

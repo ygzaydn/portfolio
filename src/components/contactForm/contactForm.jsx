@@ -25,7 +25,6 @@ import { withWindowConsumer } from "../../contexts/window/consumer";
 const useStyles = () => ({
     contactContainer: {
         padding: "2rem 2rem 5rem 2rem",
-        marginBottom: "5rem",
     },
     contactGrid: {
         display: "flex",
@@ -34,9 +33,7 @@ const useStyles = () => ({
         alignItems: "center",
     },
     root: {
-        width: "50%",
         maxWidth: "750px",
-
         "& .MuiInputBase-input": {
             color: "#4B6587",
         },
@@ -72,6 +69,9 @@ const useStyles = () => ({
         borderRight: (props) =>
             props.width < props.limit ? null : "0.2px solid lightgray",
         paddingBottom: "4rem",
+    },
+    button: {
+        marginTop: "3rem",
     },
 });
 
