@@ -47,7 +47,6 @@ const ServiceCard = ({ title, description, logo, classes }) => {
             <Typography  variant="h6">
               {title}
             </Typography>
-
             <Typography variant="subtitle1">
               {description}
             </Typography>
