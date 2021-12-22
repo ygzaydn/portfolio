@@ -15,12 +15,17 @@ import { withStyles } from "@material-ui/core";
 
 import { compose } from "recompose";
 import { withFirebaseConsumer } from "../../contexts/firebase/index";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import TwitterIcon from "@material-ui/icons/Twitter";
 
 import { v4 as uuidv4 } from "uuid";
+import { withWindowConsumer } from "../../contexts/window/consumer";
 
 const useStyles = () => ({
     contactContainer: {
-        padding: "10% 2rem",
+        padding: "2rem 2rem 5rem 2rem",
+        marginBottom: "5rem",
     },
     contactGrid: {
         display: "flex",
@@ -50,14 +55,35 @@ const useStyles = () => ({
             border: "0.2px solid lightgray",
         },
     },
-    button: {
-        "&.Mui-disabled": {
-            backgroundColor: "#4BFFA5",
+    footerContainer: {
+        padding: "min(5%,50px)",
+        justifyContent: "center",
+
+        bottom: 0,
+        transition: "all 0.5s ease-out",
+    },
+    socialIcon: {
+        display: "flex",
+        justifyContent: "space-evenly",
+        alignItems: "center",
+        "& svg": {
+            fill: "black",
+            cursor: "pointer",
+            "&:hover": {
+                fill: "#4B6587",
+            },
+            transition: "all 0.25s ease-out",
         },
+    },
+    fromGrid: {
+        margin: "auto",
+        borderRight: (props) =>
+            props.width < props.limit ? null : "0.2px solid lightgray",
+        paddingBottom: "4rem",
     },
 });
 
-const ContactForm = ({ classes, firebase }) => {
+const ContactForm = ({ classes, firebase, width, limit }) => {
     const [message, setMessage] = useState({
         name: "",
         email: "",
@@ -104,70 +130,100 @@ const ContactForm = ({ classes, firebase }) => {
             className={classes.contactContainer}
             id="contact-desktop"
         >
-            <Grid
-                item
-                xs={12}
-                style={{ marginBottom: "5%" }}
-                id="contact-mobile"
-            >
-                <Typography color="primary" variant="h2">
-                    Contact
-                </Typography>
-            </Grid>
-            <Grid container style={{ height: "25rem" }}>
-                <Grid item xs={12} className={classes.contactGrid}>
-                    <TextField
-                        id="standard-basic"
-                        label="Name"
-                        color="primary"
-                        required
-                        className={classes.root}
-                        onChange={addInfo("name")}
-                        classes={{
-                            root: classes.root,
-                        }}
-                    />
-                </Grid>
+            <Grid container>
+                <Grid item xs={12} md={6} className={classes.fromGrid}>
+                    <Grid item xs={12} className={classes.contactGrid}>
+                        <TextField
+                            id="standard-basic"
+                            label="Name"
+                            color="primary"
+                            required
+                            className={classes.root}
+                            onChange={addInfo("name")}
+                            classes={{
+                                root: classes.root,
+                            }}
+                        />
+                    </Grid>
 
-                <Grid item xs={12} className={classes.contactGrid}>
-                    <TextField
-                        id="standard-basic"
-                        label="E-mail"
-                        color="primary"
-                        required
-                        onChange={addInfo("email")}
-                        className={classes.root}
-                        classes={{
-                            root: classes.root,
-                        }}
-                    />
-                </Grid>
+                    <Grid item xs={12} className={classes.contactGrid}>
+                        <TextField
+                            id="standard-basic"
+                            label="E-mail"
+                            color="primary"
+                            required
+                            onChange={addInfo("email")}
+                            className={classes.root}
+                            classes={{
+                                root: classes.root,
+                            }}
+                        />
+                    </Grid>
 
-                <Grid item xs={12} className={classes.contactGrid}>
-                    <TextField
-                        id="standard-basic"
-                        label="Message"
-                        color="primary"
-                        required
-                        onChange={addInfo("message")}
-                        multiline
-                        rows={3}
-                        className={classes.root}
-                        classes={{
-                            root: classes.root,
-                        }}
-                    />
+                    <Grid item xs={12} className={classes.contactGrid}>
+                        <TextField
+                            id="standard-basic"
+                            label="Message"
+                            color="primary"
+                            required
+                            onChange={addInfo("message")}
+                            multiline
+                            rows={3}
+                            className={classes.root}
+                            classes={{
+                                root: classes.root,
+                            }}
+                        />
+                    </Grid>
+                    <Grid item xs={12} className={classes.contactGrid}>
+                        <Button
+                            variant="contained"
+                            disabled={!checkFields()}
+                            className={classes.button}
+                            color="primary"
+                            onClick={() => sendInfoToDb(message.uuid, message)}
+                        >
+                            Send
+                        </Button>
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} className={classes.contactGrid}>
-                    <Button
-                        variant="contained"
-                        disabled={!checkFields()}
-                        className={classes.button}
-                        color="primary"
-                        onClick={() => sendInfoToDb(message.uuid, message)}
+                <Grid item xs={12} md={6} style={{ margin: "auto" }}>
+                    <Grid item xs={12}>
+                        <Typography color="primary" variant="h6">
+                            Email: ygzaydns@gmail.com
+                        </Typography>
+                    </Grid>
+                    <Grid
+                        container
+                        className={classes.footerContainer}
+                        id="footer"
                     >
-                        Send
-                    </Button>
+                        <Grid
+                            item
+                            xs={6}
+                            className={classes.socialIcon}
+                            id="socialIcon"
+                        >
+                            <LinkedInIcon
+                                onClick={() => {
+                                    window.location.href =
+                                        "https://tr.linkedin.com/in/erol-ya%C4%9F%C4%B1z-ayd%C4%B1n-208517a9";
+                                }}
+                            />
+                            <GitHubIcon
+                                onClick={() => {
+                                    window.location.href =
+                                        "https://github.com/ygzaydn";
+                                }}
+                            />
+                            <TwitterIcon
+                                onClick={() => {
+                                    window.location.href =
+                                        "https://twitter.com/aydnygz";
+                                }}
+                            />
+                        </Grid>
+                    </Grid>
                 </Grid>
             </Grid>
             <Dialog
@@ -193,7 +249,7 @@ const ContactForm = ({ classes, firebase }) => {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
-                        Close{" "}
+                        Close
                     </Button>
                 </DialogActions>
             </Dialog>
@@ -202,6 +258,7 @@ const ContactForm = ({ classes, firebase }) => {
 };
 
 export default compose(
+    withWindowConsumer,
     withFirebaseConsumer,
     withStyles(useStyles)
 )(ContactForm);

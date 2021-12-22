@@ -15,11 +15,12 @@ import {
 } from "@material-ui/core";
 
 import { compose } from "recompose";
+import { withWindowConsumer } from "../../contexts/window/consumer";
 
 const useStyles = () => ({
     root: {
         display: "flex",
-        height: "20rem",
+        height: (props) => (props.width < props.limit ? "10rem" : "20rem"),
         padding: "1.5rem 2rem",
         backgroundColor: "black",
         border: "2px solid lightgray",
@@ -48,7 +49,12 @@ const useStyles = () => ({
         height: "90%",
     },
     cover: {
-        height: "20rem",
+        height: (props) => (props.width < props.limit ? "100%" : "20rem"),
+        backgroundSize: "cover",
+        transition: "all .5s",
+    },
+    coverDialog: {
+        height: (props) => (props.width < props.limit ? "10rem" : "20rem"),
         backgroundSize: "cover",
         transition: "all .5s",
     },
@@ -65,10 +71,10 @@ const useStyles = () => ({
         },
     },
     dialogImageGrid: {
-        padding: "1rem",
+        padding: "0.5rem",
     },
     dialogTextGrid: {
-        padding: "1rem",
+        padding: "0.5rem",
     },
     dialogContainer: {
         borderBottom: "0.2px solid lightgray",
@@ -83,6 +89,8 @@ const ProjectCard = ({
     tech,
     link,
     note,
+    limit,
+    width,
 }) => {
     const [open, setOpen] = useState(false);
 
@@ -105,7 +113,7 @@ const ProjectCard = ({
                 <DialogTitle>
                     <Typography
                         color="primary"
-                        variant="h4"
+                        variant={width < limit ? "h6" : "h4"}
                         style={{
                             textAlign: "center",
                             padding: "1rem 2rem",
@@ -119,19 +127,31 @@ const ProjectCard = ({
                     <Grid container className={classes.dialogContainer}>
                         <Grid item xs={12} className={classes.dialogImageGrid}>
                             <CardMedia
-                                className={classes.cover}
+                                className={classes.coverDialog}
                                 image={image}
                                 title={title}
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.dialogTextGrid}>
                             <DialogContentText>
-                                <Typography variant="subtitle1">
+                                <Typography
+                                    variant={
+                                        width < limit
+                                            ? "subtitle2"
+                                            : "subtitle1"
+                                    }
+                                >
                                     {description}
                                 </Typography>
                             </DialogContentText>
                             <DialogContentText>
-                                <Typography variant="subtitle2">
+                                <Typography
+                                    variant={
+                                        width < limit
+                                            ? "subtitle2"
+                                            : "subtitle1"
+                                    }
+                                >
                                     Stack: {tech}
                                 </Typography>
                             </DialogContentText>
@@ -182,4 +202,4 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default compose(withStyles(useStyles))(ProjectCard);
+export default compose(withWindowConsumer, withStyles(useStyles))(ProjectCard);

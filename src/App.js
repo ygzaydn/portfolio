@@ -61,7 +61,7 @@ const useStyles = () => ({
         alignItems: "center",
     },
     techContainer: {
-        padding: "10% 0 ",
+        padding: (props) => (props.width < props.limit ? "20% 0" : "10% 0 "),
         justifyContent: "space-around",
         alignItems: "center",
         background: ` linear-gradient(#000000D1,#000000D1),url(${BackgroundImageTech})`,
@@ -74,17 +74,29 @@ const useStyles = () => ({
         justifyContent: "center",
         alignItems: "center",
     },
+    contactContainerMaxWidthGrid: {
+        margin: "auto",
+        maxWidth: (props) => props.maxWidth,
+        justifyContent: "center",
+        alignItems: "center",
+    },
     projectsGrid: {
-        display: "flex",
         justifyContent: "center",
         margin: "0.2rem 0",
     },
     projectsContainer: {
         padding: "5% 2rem",
     },
+    projectGrid: {
+        display: "grid",
+        "grid-template-columns": (props) =>
+            props.width < props.limit ? "2fr 2fr" : "2fr 2fr 2fr",
+        "grid-template-rows": (props) =>
+            props.width < props.limit ? "2fr 2fr" : "2fr 2fr 2fr",
+    },
 });
 
-const App = ({ classes, width, height, firebase }) => {
+const App = ({ classes, width, height, firebase, limit }) => {
     const el = useRef("");
 
     useEffect(() => {
@@ -93,7 +105,7 @@ const App = ({ classes, width, height, firebase }) => {
             typeSpeed: 50,
             backSpeed: 50,
             backDelay: 1000,
-            showCursor: true,
+            showCursor: false,
             loop: true,
         });
 
@@ -131,8 +143,8 @@ const App = ({ classes, width, height, firebase }) => {
                                 textAlign: "start",
                                 color: "rgb(75, 202, 135)",
                                 fontWeight: "600",
-                                fontSize: "4.5rem",
-                                height: "5rem",
+                                fontSize: limit > width ? "1.5rem" : "4.5rem",
+                                height: limit > width ? "1.75rem" : "5rem",
                             }}
                             ref={el}
                         />
@@ -160,7 +172,10 @@ const App = ({ classes, width, height, firebase }) => {
                             style={{ marginBottom: "5%" }}
                             id="services-mobile"
                         >
-                            <Typography color="primary" variant="h2">
+                            <Typography
+                                color="primary"
+                                variant={limit > width ? "h4" : "h2"}
+                            >
                                 Services
                             </Typography>
                         </Grid>
@@ -203,7 +218,10 @@ const App = ({ classes, width, height, firebase }) => {
                             style={{ marginBottom: "5%" }}
                             id="stack-mobile"
                         >
-                            <Typography variant="h2" color="secondary">
+                            <Typography
+                                color="secondary"
+                                variant={limit > width ? "h4" : "h2"}
+                            >
                                 Tech Stack
                             </Typography>
                         </Grid>
@@ -224,18 +242,14 @@ const App = ({ classes, width, height, firebase }) => {
                         style={{ marginBottom: "5%" }}
                         id="project-mobile"
                     >
-                        <Typography color="primary" variant="h2">
+                        <Typography
+                            color="primary"
+                            variant={limit > width ? "h4" : "h2"}
+                        >
                             Projects
                         </Typography>
                     </Grid>
-                    <Grid
-                        container
-                        style={{
-                            display: "grid",
-                            "grid-template-columns": "2fr 2fr 2fr",
-                            "grid-template-rows": "2fr 2fr 2fr",
-                        }}
-                    >
+                    <Grid container className={classes.projectGrid}>
                         <Grid className={classes.projectsGrid}>
                             <ProjectCard
                                 title="Golden Lotus Boost Community"
@@ -304,9 +318,23 @@ const App = ({ classes, width, height, firebase }) => {
                         </Grid>
                     </Grid>
                 </Grid>
-                <ContactForm />
+                <Grid
+                    item
+                    xs={12}
+                    style={{ marginBottom: "5%" }}
+                    id="contact-mobile"
+                    className={classes.contactContainerMaxWidthGrid}
+                >
+                    <Typography
+                        color="primary"
+                        variant={limit > width ? "h4" : "h2"}
+                        style={{ marginBottom: "2rem" }}
+                    >
+                        Contact
+                    </Typography>
+                    <ContactForm />
+                </Grid>
             </Grid>
-            <Footer />
         </Grid>
     );
 };

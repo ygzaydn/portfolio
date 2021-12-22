@@ -29,6 +29,7 @@ const useStyles = () => ({
     },
     nameGrid: {
         display: "flex",
+        justifyContent: "center",
         "& p": {
             fontSize: "2rem",
         },
@@ -90,11 +91,11 @@ const Header = ({ classes, width, limit }) => {
     return (
         <Grid container className={classes.headerContainer} id="header">
             <Grid container className={classes.headerMaxWidthGrid}>
-                <Grid item xs={4} className={classes.nameGrid}>
+                <Grid item xs={12} sm={4} className={classes.nameGrid}>
                     <Typography color="secondary">erolyagiz</Typography>
                     <Typography color="error">aydin</Typography>
                 </Grid>
-                {width > limit ? (
+                {width > limit && (
                     <Grid item xs={5} className={classes.menuGrid}>
                         <Typography
                             color="secondary"
@@ -136,76 +137,6 @@ const Header = ({ classes, width, limit }) => {
                         >
                             Contacts
                         </Typography>
-                    </Grid>
-                ) : (
-                    <Grid item xs={2} className={classes.menuGrid}>
-                        <MenuIcon onClick={handleClick} aria-controls="menu" />
-                        <Menu
-                            id="menu"
-                            anchorEl={anchorEl}
-                            keepMounted
-                            open={Boolean(anchorEl)}
-                            elevation={0}
-                            getContentAnchorEl={null}
-                            onClose={() => setAnchorEl(null)}
-                            anchorOrigin={{
-                                vertical: "bottom",
-                                horizontal: "center",
-                            }}
-                            transformOrigin={{
-                                vertical: "top",
-                                horizontal: "center",
-                            }}
-                            PaperProps={{
-                                style: {
-                                    backgroundColor: "#000000",
-                                    border: "0.2px solid lightgray",
-                                    color: "#4BFFA5",
-                                },
-                            }}
-                        >
-                            <MenuItem
-                                style={{
-                                    borderBottom: "0.5px solid lightgray",
-                                }}
-                                key="home-mobile"
-                                onClick={() => scrollTo("home")}
-                            >
-                                Home
-                            </MenuItem>
-                            <MenuItem
-                                style={{
-                                    borderBottom: "0.5px solid lightgray",
-                                }}
-                                onClick={() => scrollTo("services-mobile")}
-                            >
-                                Services
-                            </MenuItem>
-                            <MenuItem
-                                style={{
-                                    borderBottom: "0.5px solid lightgray",
-                                }}
-                                key="stack-mobile"
-                                onClick={() => scrollTo("stack-mobile")}
-                            >
-                                Tech
-                            </MenuItem>
-
-                            <MenuItem
-                                style={{
-                                    borderBottom: "0.5px solid lightgray",
-                                }}
-                                key="project-mobile"
-                                onClick={() => scrollTo("project-mobile")}
-                            >
-                                Projects
-                            </MenuItem>
-                            <MenuItem
-                                onClick={() => scrollTo("contact-mobile")}
-                            >
-                                Contacts
-                            </MenuItem>
-                        </Menu>
                     </Grid>
                 )}
             </Grid>
