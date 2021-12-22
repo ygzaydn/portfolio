@@ -33,7 +33,7 @@ const useStyles = () => ({
         alignItems: "center",
     },
     root: {
-        maxWidth: "750px",
+        width: (props) => (props.limit < props.width ? "60%" : null),
         "& .MuiInputBase-input": {
             color: "#4B6587",
         },
@@ -68,6 +68,8 @@ const useStyles = () => ({
         margin: "auto",
         borderRight: (props) =>
             props.width < props.limit ? null : "0.2px solid lightgray",
+        borderBottom: (props) =>
+            props.width > props.limit ? null : "0.2px solid lightgray",
         paddingBottom: "4rem",
     },
     button: {
@@ -124,49 +126,52 @@ const ContactForm = ({ classes, firebase, width, limit }) => {
         >
             <Grid container>
                 <Grid item xs={12} md={6} className={classes.fromGrid}>
-                    <Grid item xs={12} className={classes.contactGrid}>
-                        <TextField
-                            id="standard-basic"
-                            label="Name"
-                            color="primary"
-                            required
-                            className={classes.root}
-                            onChange={addInfo("name")}
-                            classes={{
-                                root: classes.root,
-                            }}
-                        />
+                    <Grid container>
+                        <Grid item xs={12} className={classes.contactGrid}>
+                            <TextField
+                                id="standard-basic"
+                                label="Name"
+                                color="primary"
+                                required
+                                className={classes.root}
+                                onChange={addInfo("name")}
+                                classes={{
+                                    root: classes.root,
+                                }}
+                            />
+                        </Grid>
+
+                        <Grid item xs={12} className={classes.contactGrid}>
+                            <TextField
+                                id="standard-basic"
+                                label="E-mail"
+                                color="primary"
+                                required
+                                onChange={addInfo("email")}
+                                className={classes.root}
+                                classes={{
+                                    root: classes.root,
+                                }}
+                            />
+                        </Grid>
+
+                        <Grid item xs={12} className={classes.contactGrid}>
+                            <TextField
+                                id="standard-basic"
+                                label="Message"
+                                color="primary"
+                                required
+                                onChange={addInfo("message")}
+                                multiline
+                                rows={3}
+                                className={classes.root}
+                                classes={{
+                                    root: classes.root,
+                                }}
+                            />
+                        </Grid>
                     </Grid>
 
-                    <Grid item xs={12} className={classes.contactGrid}>
-                        <TextField
-                            id="standard-basic"
-                            label="E-mail"
-                            color="primary"
-                            required
-                            onChange={addInfo("email")}
-                            className={classes.root}
-                            classes={{
-                                root: classes.root,
-                            }}
-                        />
-                    </Grid>
-
-                    <Grid item xs={12} className={classes.contactGrid}>
-                        <TextField
-                            id="standard-basic"
-                            label="Message"
-                            color="primary"
-                            required
-                            onChange={addInfo("message")}
-                            multiline
-                            rows={3}
-                            className={classes.root}
-                            classes={{
-                                root: classes.root,
-                            }}
-                        />
-                    </Grid>
                     <Grid item xs={12} className={classes.contactGrid}>
                         <Button
                             variant="contained"
@@ -179,7 +184,12 @@ const ContactForm = ({ classes, firebase, width, limit }) => {
                         </Button>
                     </Grid>
                 </Grid>
-                <Grid item xs={12} md={6} style={{ margin: "auto" }}>
+                <Grid
+                    item
+                    xs={12}
+                    md={6}
+                    style={{ margin: "auto", padding: "2rem 0" }}
+                >
                     <Grid item xs={12}>
                         <Typography color="primary" variant="h6">
                             Email: ygzaydns@gmail.com
