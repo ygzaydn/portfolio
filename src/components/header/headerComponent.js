@@ -1,12 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-    Grid,
-    Typography,
-    withStyles,
-    Menu,
-    MenuItem,
-} from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
+import React, { useEffect } from "react";
+import { Grid, Typography, withStyles } from "@material-ui/core";
 
 import { compose } from "recompose";
 import { withWindowConsumer } from "../../contexts/window/consumer";
@@ -56,22 +49,28 @@ const useStyles = () => ({
 });
 
 const Header = ({ classes, width, limit }) => {
-    const [anchorEl, setAnchorEl] = useState(null);
-
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
     const scrollTo = (element) => {
         document.getElementById(`${element}`).scrollIntoView({
             behavior: "smooth",
             block: element !== "project-desktop" ? "center" : "start",
             inline: "nearest",
         });
-        setAnchorEl(null);
     };
 
     useEffect(() => {
+        let y = window.pageYOffset;
+        let header = document.getElementById("header");
+        if (y) {
+            header.style.backgroundColor = "black";
+            header.style.borderBottom = "0.2px solid lightgray";
+            header.style.zIndex = "50";
+            header.style.padding = "0";
+        } else {
+            header.style.backgroundColor = "inherit";
+            header.style.borderBottom = "none";
+            header.style.padding = "2%";
+        }
+
         window.addEventListener("scroll", () => {
             let y = window.pageYOffset;
             let header = document.getElementById("header");

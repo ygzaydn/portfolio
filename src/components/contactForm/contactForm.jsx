@@ -36,22 +36,14 @@ const useStyles = () => ({
     root: {
         width: "50%",
         maxWidth: "750px",
-        "& .MuiInputBase-root": {
-            color: "#A4A4A4",
-        },
-        "& .MuiInputBase-inpıt": {
-            color: "black",
-        },
-        "& .MuiFormLabel-root": {
-            color: "#A4A4A4",
-        },
-        "& .MuiInput-underline:before": {
-            borderBottomColor: "#A4A4A4",
+
+        "& .MuiInputBase-input": {
+            color: "#4B6587",
         },
     },
     dialogBox: {
         "& .MuiDialog-paperScrollPaper": {
-            backgroundColor: "black",
+            backgroundColor: "#4B6587",
             border: "0.2px solid lightgray",
         },
     },

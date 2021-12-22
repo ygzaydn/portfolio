@@ -3,7 +3,6 @@ import "./App.css";
 import Typed from "typed.js";
 
 import Header from "./components/header/headerComponent";
-import Footer from "./components/footer/footerComponent";
 import ContactForm from "./components/contactForm/contactForm";
 
 import { Grid, Typography } from "@material-ui/core";
