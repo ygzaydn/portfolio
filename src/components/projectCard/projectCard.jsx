@@ -137,7 +137,7 @@ const ProjectCard = ({
                                 <Typography
                                     variant={
                                         width < limit
-                                            ? "subtitle2"
+                                            ? "subtitle1"
                                             : "subtitle1"
                                     }
                                 >
