@@ -18,6 +18,7 @@ import { withFirebaseConsumer } from "../../contexts/firebase/index";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import TwitterIcon from "@material-ui/icons/Twitter";
+import SendIcon from "@material-ui/icons/Send";
 
 import { v4 as uuidv4 } from "uuid";
 import { withWindowConsumer } from "../../contexts/window/consumer";
@@ -34,13 +35,17 @@ const useStyles = () => ({
     },
     root: {
         width: (props) => (props.limit < props.width ? "60%" : null),
+
         "& .MuiInputBase-input": {
-            color: "#4B6587",
+            color: "#f1f1f1",
+        },
+        "& .MuiFormLabel-root": {
+            color: "#C8C6C6",
         },
     },
     dialogBox: {
         "& .MuiDialog-paperScrollPaper": {
-            backgroundColor: "#4B6587",
+            backgroundColor: "#C8C6C6",
             border: "0.2px solid lightgray",
         },
     },
@@ -53,13 +58,14 @@ const useStyles = () => ({
     },
     socialIcon: {
         display: "flex",
+
         justifyContent: "space-evenly",
         alignItems: "center",
         "& svg": {
-            fill: "black",
+            fill: "#C8C6C6",
             cursor: "pointer",
             "&:hover": {
-                fill: "#4B6587",
+                fill: "#f1f1f1",
             },
             transition: "all 0.25s ease-out",
         },
@@ -71,9 +77,14 @@ const useStyles = () => ({
         borderBottom: (props) =>
             props.width > props.limit ? null : "0.2px solid lightgray",
         paddingBottom: "4rem",
+        display: "flex",
+        flexDirection: "column",
     },
     button: {
         marginTop: "3rem",
+        "& .MuiButton-contained.Mui-disabled": {
+            backgroundColor: "#f1f1f1 !important",
+        },
     },
 });
 
@@ -129,10 +140,9 @@ const ContactForm = ({ classes, firebase, width, limit }) => {
                     <Grid container>
                         <Grid item xs={12} className={classes.contactGrid}>
                             <TextField
-                                id="standard-basic"
                                 label="Name"
-                                color="primary"
                                 required
+                                color="secondary"
                                 className={classes.root}
                                 onChange={addInfo("name")}
                                 classes={{
@@ -143,9 +153,8 @@ const ContactForm = ({ classes, firebase, width, limit }) => {
 
                         <Grid item xs={12} className={classes.contactGrid}>
                             <TextField
-                                id="standard-basic"
                                 label="E-mail"
-                                color="primary"
+                                color="secondary"
                                 required
                                 onChange={addInfo("email")}
                                 className={classes.root}
@@ -157,9 +166,8 @@ const ContactForm = ({ classes, firebase, width, limit }) => {
 
                         <Grid item xs={12} className={classes.contactGrid}>
                             <TextField
-                                id="standard-basic"
                                 label="Message"
-                                color="primary"
+                                color="secondary"
                                 required
                                 onChange={addInfo("message")}
                                 multiline
@@ -174,11 +182,12 @@ const ContactForm = ({ classes, firebase, width, limit }) => {
 
                     <Grid item xs={12} className={classes.contactGrid}>
                         <Button
-                            variant="contained"
+                            variant="outlined"
                             disabled={!checkFields()}
                             className={classes.button}
-                            color="primary"
+                            color="secondary"
                             onClick={() => sendInfoToDb(message.uuid, message)}
+                            endIcon={<SendIcon />}
                         >
                             Send
                         </Button>
@@ -191,8 +200,8 @@ const ContactForm = ({ classes, firebase, width, limit }) => {
                     style={{ margin: "auto", padding: "2rem 0" }}
                 >
                     <Grid item xs={12}>
-                        <Typography color="primary" variant="h6">
-                            Email: ygzaydns@gmail.com
+                        <Typography color="secondary" variant="h6">
+                            ygzaydns@gmail.com
                         </Typography>
                     </Grid>
                     <Grid
@@ -243,7 +252,7 @@ const ContactForm = ({ classes, firebase, width, limit }) => {
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        <Typography color="secondary" variant="subtitle1">
+                        <Typography variant="subtitle1">
                             I have received your message, you will get an e-mail
                             as a response.
                         </Typography>

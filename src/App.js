@@ -73,11 +73,15 @@ const useStyles = () => ({
         justifyContent: "center",
         alignItems: "center",
     },
-    contactContainerMaxWidthGrid: {
+
+    contactContainer: {
         margin: "auto",
-        maxWidth: (props) => props.maxWidth,
         justifyContent: "center",
+        padding: "0 10%",
         alignItems: "center",
+        maxWidth: "100%",
+        background: "#4B6587",
+        clipPath: "polygon(0% 7.5%, 100% 0%, 100% 100%, 0% 100%)",
     },
     projectsGrid: {
         justifyContent: "center",
@@ -320,14 +324,14 @@ const App = ({ classes, width, height, firebase, limit }) => {
                 <Grid
                     item
                     xs={12}
-                    style={{ marginBottom: "5%" }}
+                    style={{ marginBottom: "5%", paddingTop: "5%" }}
                     id="contact-mobile"
-                    className={classes.contactContainerMaxWidthGrid}
+                    className={classes.contactContainer}
                 >
                     <Typography
-                        color="primary"
                         variant={limit > width ? "h4" : "h2"}
-                        style={{ margin: "2rem 0 " }}
+                        style={{ margin: "6rem 0 0 0" }}
+                        color="secondary"
                     >
                         Contact
                     </Typography>
