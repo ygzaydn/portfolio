@@ -148,6 +148,7 @@ const App = ({ classes, width, height, firebase, limit }) => {
                                 fontWeight: "600",
                                 fontSize: limit > width ? "1.5rem" : "4.5rem",
                                 height: limit > width ? "1.75rem" : "5rem",
+                                padding: "1rem 0",
                             }}
                             ref={el}
                         />
