@@ -32,7 +32,8 @@ const useStyles = () => ({
             "& h6": {
                 textShadow:
                     "2px 2px 0 #4B6587, 2px -2px 0 #4B6587, -2px 2px 0 #4B6587, -2px -2px 0 #4B6587, 2px 0px 0 #4B6587, 0px 2px 0 #4B6587, -2px 0px 0 #4B6587, 0px -2px 0 #4B6587",
-                display: "inherit",
+                display: (props) =>
+                    props.width > props.limit ? "inherit" : "hidden",
                 zIndex: 50,
                 color: "black",
             },
@@ -74,6 +75,7 @@ const useStyles = () => ({
             textTransform: "uppercase",
         },
     },
+
     dialogImageGrid: {
         padding: "0.5rem",
     },
