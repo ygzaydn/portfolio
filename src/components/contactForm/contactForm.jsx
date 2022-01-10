@@ -34,7 +34,7 @@ const useStyles = () => ({
         alignItems: "center",
     },
     root: {
-        width: (props) => (props.limit < props.width ? "60%" : null),
+        width: (props) => (props.limit < props.width ? "60%" : "100%"),
 
         "& .MuiInputBase-input": {
             color: "#f1f1f1",
