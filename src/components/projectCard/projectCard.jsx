@@ -21,16 +21,20 @@ const useStyles = () => ({
     root: {
         display: "flex",
         height: (props) => (props.width < props.limit ? "10rem" : "20rem"),
-        padding: "1.5rem 2rem",
-        backgroundColor: "black",
+        padding: "1rem",
+        backgroundColor: "transparent",
         border: "2px solid lightgray",
         width: "60%",
         position: "relative",
+        borderRadius: 20,
         "&:hover": {
             cursor: "pointer",
             "& h6": {
+                textShadow:
+                    "2px 2px 0 #4B6587, 2px -2px 0 #4B6587, -2px 2px 0 #4B6587, -2px -2px 0 #4B6587, 2px 0px 0 #4B6587, 0px 2px 0 #4B6587, -2px 0px 0 #4B6587, 0px -2px 0 #4B6587",
                 display: "inherit",
                 zIndex: 50,
+                color: "black",
             },
             "& div": {
                 "& div": {
@@ -103,7 +107,7 @@ const ProjectCard = ({
     };
 
     return (
-        <div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
             <Dialog
                 open={open}
                 TransitionComponent={Transition}

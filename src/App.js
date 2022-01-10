@@ -29,6 +29,7 @@ import LibrejournalImage from "./images/librejournal.jpg";
 import CrownImage from "./images/CrownImage.png";
 import GoldenLotusImage from "./images/goldenlotus.png";
 import TodoImage from "./images/todo.png";
+import SongRecommenderImage from "./images/song-recommender.png";
 
 const useStyles = () => ({
     homepageContainer: {
@@ -85,7 +86,7 @@ const useStyles = () => ({
     },
     projectsGrid: {
         justifyContent: "center",
-        margin: "0.2rem 0",
+        padding: "0.5rem",
     },
     projectsContainer: {
         padding: "5% 2rem",
@@ -148,7 +149,6 @@ const App = ({ classes, width, height, firebase, limit }) => {
                                 fontWeight: "600",
                                 fontSize: limit > width ? "1.5rem" : "4.5rem",
                                 height: limit > width ? "1.75rem" : "5rem",
-                                padding: "1rem 0",
                             }}
                             ref={el}
                         />
@@ -254,6 +254,15 @@ const App = ({ classes, width, height, firebase, limit }) => {
                         </Typography>
                     </Grid>
                     <Grid container className={classes.projectGrid}>
+                        <Grid className={classes.projectsGrid}>
+                            <ProjectCard
+                                title="Song Recommender"
+                                description="Song recommender is a website to help you find similar songs based on your search. This project is powered by Last.fm API."
+                                image={SongRecommenderImage}
+                                tech="Javascript - Redux - React - SCSS- Firebase - Material UI"
+                                link="https://song-recommender-001.web.app/"
+                            />
+                        </Grid>
                         <Grid className={classes.projectsGrid}>
                             <ProjectCard
                                 title="Golden Lotus Boost Community"
