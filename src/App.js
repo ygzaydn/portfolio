@@ -22,6 +22,7 @@ import DeveloperModeIcon from "@material-ui/icons/DeveloperMode";
 import CodeIcon from "@material-ui/icons/Code";
 import ColorizeIcon from "@material-ui/icons/Colorize";
 import ApiIcon from "@mui/icons-material/Api";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 import ICCImage from "./images/icc.jpg";
 import RidenrateImage from "./images/ridenrate.jpg";
@@ -119,15 +120,57 @@ const useStyles = () => ({
         display: "grid",
         gridTemplateColumns: "repeat(4,1fr)",
 
-        "@media(width<1200px)": {
+        "@media(max-width:1200px)": {
             gridTemplateColumns: "repeat(2,1fr)",
+        },
+    },
+    upScrollDiv: {
+        position: "fixed",
+        bottom: "25px",
+        right: "25px",
+        width: "50px",
+        backgroundColor: "rgb(75, 202, 135)",
+        borderRadius: "10px",
+        height: "50px",
+        display: "none",
+        justifyContent: "center",
+        alignItems: "center",
+        cursor: "pointer",
+        zIndex: 5000,
+
+        "& svg": {
+            height: 40,
+            width: 40,
+            fill: "white",
+        },
+    },
+    "@global": {
+        "@keyframes fade": {
+            "0%": {
+                opacity: "0",
+                display: "none",
+            },
+            "100%": {
+                opacity: "1",
+                display: "flex",
+            },
+        },
+        "@keyframes reverseFade": {
+            "0%": {
+                opacity: "1",
+                display: "flex",
+            },
+            "100%": {
+                opacity: "0",
+                display: "none",
+            },
         },
     },
 });
 
 const App = ({ classes, width, height, firebase, limit }) => {
     const el = useRef("");
-
+    const scrollRef = useRef(null);
     useEffect(() => {
         const typed = new Typed(el.current, {
             strings: ["erolyagizaydin"],
@@ -144,8 +187,40 @@ const App = ({ classes, width, height, firebase, limit }) => {
         };
     }, []);
 
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    const handleScroll = () => {
+        if (scrollRef.current !== null) {
+            const style = scrollRef.current.style;
+            if (window.pageYOffset < 150) {
+                style.animationName = "reverseFade";
+                style.animationDuration = ".4s";
+                style.animationFillMode = "forwards";
+            } else {
+                style.animationName = "fade";
+                style.animationDuration = ".4s";
+                style.animationFillMode = "forwards";
+                style.display = "flex";
+            }
+        }
+    };
+
+    const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
     return (
         <Grid container>
+            <div
+                className={classes.upScrollDiv}
+                onClick={() => {
+                    scrollToTop();
+                }}
+                ref={scrollRef}
+            >
+                <KeyboardArrowUpIcon />
+            </div>
             <Header />
             <Grid container style={{ height: "100vh" }}>
                 <Grid container className={classes.homepageContainer} id="home">
@@ -294,8 +369,8 @@ const App = ({ classes, width, height, firebase, limit }) => {
                             description="Argbot is a clone of a crypto bot website. The website is not connected with any backend service, purpose is to show example cases."
                             image={ArgbotImage}
                             tech="Javascript - Redux - React - SCSS- Firebase - Material UI"
-                            note="You can login with any id/password information to check overall system."
-                            link="https://song-recommender-001.web.app/"
+                            note="You can login with any id/password combination to check overall system."
+                            link="https://argbotxyz.web.app"
                             size="huge"
                         />
                         <ProjectCard
