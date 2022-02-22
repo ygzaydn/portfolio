@@ -20,16 +20,16 @@ import { withWindowConsumer } from "../../contexts/window/consumer";
 const useStyles = () => ({
     root: {
         display: "flex",
-        height: (props) => (props.width < props.limit ? "10rem" : "20rem"),
-        padding: "1rem",
+        minHeight: (props) => (props.width < props.limit ? "15rem" : "20rem"),
+        padding: (props) => (props.width < props.limit ? "0" : "1rem"),
         backgroundColor: "transparent",
         border: "2px solid lightgray",
-        width: "60%",
+        width: "100%",
         position: "relative",
         borderRadius: 20,
         "&:hover": {
             cursor: "pointer",
-            "& h6": {
+            "& h4": {
                 textShadow:
                     "2px 2px 0 #4B6587, 2px -2px 0 #4B6587, -2px 2px 0 #4B6587, -2px -2px 0 #4B6587, 2px 0px 0 #4B6587, 0px 2px 0 #4B6587, -2px 0px 0 #4B6587, 0px -2px 0 #4B6587",
                 display: (props) =>
@@ -54,7 +54,7 @@ const useStyles = () => ({
         height: "90%",
     },
     cover: {
-        height: (props) => (props.width < props.limit ? "100%" : "20rem"),
+        height: "100%",
         backgroundSize: "cover",
         transition: "all .5s",
     },
@@ -64,7 +64,7 @@ const useStyles = () => ({
         transition: "all .5s",
     },
     projectCardGrid: {
-        "& h6": {
+        "& h4": {
             position: "absolute",
             top: "50%",
             left: "50%",
@@ -84,6 +84,26 @@ const useStyles = () => ({
     },
     dialogContainer: {
         borderBottom: "0.2px solid lightgray",
+    },
+    gridSize: {
+        display: "flex",
+        justifyContent: "center",
+        height: "100%",
+        gridColumn: (props) =>
+            props.size === "big"
+                ? props.width < props.limit
+                    ? "1/3"
+                    : "1/3"
+                : props.size === "big-end"
+                ? props.width < props.limit
+                    ? "1/3"
+                    : "2/4"
+                : props.size === "huge"
+                ? props.width < props.limit
+                    ? "1/3"
+                    : "1/3"
+                : null,
+        gridRow: (props) => (props.size === "huge" ? "1/3" : null),
     },
 });
 
@@ -109,7 +129,7 @@ const ProjectCard = ({
     };
 
     return (
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div className={classes.gridSize}>
             <Dialog
                 open={open}
                 TransitionComponent={Transition}
@@ -165,6 +185,8 @@ const ProjectCard = ({
                                 <DialogContentText
                                     style={{
                                         borderTop: "0.01px solid lightgray",
+                                        padding: "12px 0",
+                                        marginBottom: "0",
                                     }}
                                 >
                                     <Typography variant="subtitle2">
@@ -195,7 +217,7 @@ const ProjectCard = ({
                         image={image}
                         title={title}
                     />
-                    <Typography color="primary" variant="h6">
+                    <Typography color="primary" variant="h4">
                         {title}
                     </Typography>
                 </Grid>

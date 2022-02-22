@@ -13,8 +13,10 @@ const useStyles = () => ({
         height: (props) => (props.width < props.limit ? "20rem" : "25rem"),
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-evenly",
+        justifyContent: "space-between",
         transition: "all .5s ",
+        maxWidth: 300,
+        maxHeight: 350,
         "& svg": {
             fill: "#4B6587",
             height: "3rem",
@@ -31,36 +33,32 @@ const useStyles = () => ({
         },
     },
     logoGrid: {
-        padding: "2vh 0",
+        padding: "1rem 0",
+        maxHeight: "80px",
     },
 });
 
 const ServiceCard = ({ title, description, logo, classes }) => {
     return (
-        <Grid
-            item
-            md={3}
-            xs={9}
-            className={classes.serviceCardGrid}
-            key={title}
-        >
-            <Grid container>
+        <Grid item className={classes.serviceCardGrid} key={title}>
+            <Grid
+                item
+                xs={12}
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-evenly",
+                }}
+            >
                 <Grid item xs={12} className={classes.logoGrid}>
                     {logo}
                 </Grid>
-                <Grid
-                    item
-                    xs={12}
-                    style={{
-                        padding: "2vh 0",
-                        display: "flex",
-                        justifyContent: "space-around",
-                        flexDirection: "column",
-                    }}
-                >
-                    <Typography variant="h6">{title}</Typography>
-                    <Typography variant="subtitle1">{description}</Typography>
-                </Grid>
+                <Typography variant="h6" style={{ padding: ".5rem 0" }}>
+                    {title}
+                </Typography>
+                <Typography variant="subtitle2" style={{ padding: ".5rem 0" }}>
+                    {description}
+                </Typography>
             </Grid>
         </Grid>
     );
