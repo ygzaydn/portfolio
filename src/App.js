@@ -26,12 +26,12 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 import ICCImage from "./images/icc.jpg";
 import RidenrateImage from "./images/ridenrate.jpg";
-import MellImage from "./images/mell.png";
+import MellImage from "./images/mell.jpg";
 import LibrejournalImage from "./images/librejournal.jpg";
-import CrownImage from "./images/CrownImage.png";
-import GoldenLotusImage from "./images/goldenlotus.png";
-import TodoImage from "./images/todo.png";
-import SongRecommenderImage from "./images/song-recommender.png";
+import CrownImage from "./images/CrownImage.jpg";
+import GoldenLotusImage from "./images/goldenlotus.jpg";
+import TodoImage from "./images/todo.jpg";
+import SongRecommenderImage from "./images/song-recommender.jpg";
 import ArgbotImage from "./images/argbot.jpg";
 
 const useStyles = () => ({
@@ -178,7 +178,6 @@ const App = ({ classes, width, height, firebase, limit }) => {
             backSpeed: 50,
             backDelay: 1000,
             showCursor: false,
-            loop: true,
         });
 
         // Destropying
