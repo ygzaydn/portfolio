@@ -8,13 +8,13 @@ const useStyles = () => ({
     serviceCardGrid: {
         border: "0.2px solid #4B6587",
         borderRadius: "20px",
-        padding: "2.5%",
         margin: "2.5%",
-        height: (props) => (props.width < props.limit ? "20rem" : "25rem"),
+        height: (props) => (props.width < props.limit ? null : "25rem"),
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
         transition: "all .5s ",
+        padding: "1rem 2rem",
         maxWidth: 300,
         maxHeight: 350,
         "& svg": {
@@ -34,7 +34,6 @@ const useStyles = () => ({
     },
     logoGrid: {
         padding: "1rem 0",
-        maxHeight: "80px",
     },
 });
 
@@ -45,9 +44,9 @@ const ServiceCard = ({ title, description, logo, classes }) => {
                 item
                 xs={12}
                 style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-evenly",
+                    display: "grid",
+                    gridTemplateRows: "repeat(2, min-content) 1fr",
+                    alignItems: "center",
                 }}
             >
                 <Grid item xs={12} className={classes.logoGrid}>

@@ -1,4 +1,4 @@
-import { createTheme } from "@material-ui/core/styles";
+import { createTheme, responsiveFontSizes } from "@material-ui/core/styles";
 
 const theme = createTheme({
     palette: {
@@ -17,4 +17,4 @@ const theme = createTheme({
     },
 });
 
-export default theme;
+export default responsiveFontSizes(theme);

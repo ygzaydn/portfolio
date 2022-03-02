@@ -20,7 +20,7 @@ import { withWindowConsumer } from "../../contexts/window/consumer";
 const useStyles = () => ({
     root: {
         display: "flex",
-        minHeight: (props) => (props.width < props.limit ? "10rem" : "15rem"),
+        minHeight: (props) => (props.width < props.limit ? "20rem" : "15rem"),
 
         padding: (props) => (props.width < props.limit ? "0" : "1rem"),
         backgroundColor: "transparent",

@@ -36,14 +36,10 @@ import ArgbotImage from "./images/argbot.jpg";
 
 const useStyles = () => ({
     homepageContainer: {
-        flexDirection: "row",
-        height: "60%",
         backgroundImage: `url(${BackgroundImage})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        justifyContent: "center",
-        alignItems: "center",
         padding: "min(35%,150px) 0",
         minHeight: (props) => (props.limit < props.width ? "750px" : null),
 
@@ -115,14 +111,14 @@ const useStyles = () => ({
         gridRowGap: "2rem",
         gridColumnGap: "2rem",
         gridAutoFlow: "row dense",
+        minWidth: "300px",
+        maxWidth: (props) => (props.width < props.limit ? "80%" : null),
+        margin: "0 auto",
     },
     servicesGrid: {
         display: "grid",
-        gridTemplateColumns: "repeat(4,1fr)",
-
-        "@media(max-width:1200px)": {
-            gridTemplateColumns: "repeat(2,1fr)",
-        },
+        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+        justifyItems: "center",
     },
     upScrollDiv: {
         position: "fixed",
