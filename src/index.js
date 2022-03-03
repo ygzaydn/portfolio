@@ -9,10 +9,20 @@ import theme from "./theme/theme";
 
 import Firebase, { FirebaseContext } from "./contexts/firebase/";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Blog from "./pages/blog/blog";
+import Header from "./components/header/headerComponent";
+
 ReactDOM.render(
     <FirebaseContext.Provider value={new Firebase()}>
         <ThemeProvider theme={theme}>
-            <App />
+            <BrowserRouter>
+                <Header />
+                <Routes>
+                    <Route path="/portfolio" element={<App />} />
+                    <Route path="/blog" element={<Blog />} />
+                </Routes>
+            </BrowserRouter>
         </ThemeProvider>
     </FirebaseContext.Provider>,
     document.getElementById("root")

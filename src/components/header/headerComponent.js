@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Grid, Typography, withStyles } from "@material-ui/core";
 
 import { compose } from "recompose";
-import { withWindowConsumer } from "../../contexts/window/consumer";
+import { useNavigate, useLocation } from "react-router";
 
 const useStyles = () => ({
     headerContainer: {
@@ -16,7 +16,7 @@ const useStyles = () => ({
     },
     headerMaxWidthGrid: {
         margin: "auto",
-        maxWidth: (props) => props.maxWidth,
+        maxWidth: "1440px",
         justifyContent: "center",
         alignItems: "center",
     },
@@ -48,7 +48,10 @@ const useStyles = () => ({
     },
 });
 
-const Header = ({ classes, width, limit }) => {
+const Header = ({ classes }) => {
+    const [width, setWidth] = useState(window.innerWidth);
+    const limit = 900;
+
     const scrollTo = (element) => {
         document.getElementById(`${element}`).scrollIntoView({
             behavior: "smooth",
@@ -60,20 +63,7 @@ const Header = ({ classes, width, limit }) => {
     useEffect(() => {
         let y = window.pageYOffset;
         let header = document.getElementById("header");
-        if (y) {
-            header.style.backgroundColor = "black";
-            header.style.borderBottom = "0.2px solid lightgray";
-            header.style.zIndex = "50";
-            header.style.padding = "0";
-        } else {
-            header.style.backgroundColor = "inherit";
-            header.style.borderBottom = "none";
-            header.style.padding = "2%";
-        }
-
-        window.addEventListener("scroll", () => {
-            let y = window.pageYOffset;
-            let header = document.getElementById("header");
+        if (header) {
             if (y) {
                 header.style.backgroundColor = "black";
                 header.style.borderBottom = "0.2px solid lightgray";
@@ -84,8 +74,49 @@ const Header = ({ classes, width, limit }) => {
                 header.style.borderBottom = "none";
                 header.style.padding = "2%";
             }
+        }
+
+        window.addEventListener("scroll", () => {
+            let y = window.pageYOffset;
+            let header = document.getElementById("header");
+            if (header) {
+                if (y) {
+                    header.style.backgroundColor = "black";
+                    header.style.borderBottom = "0.2px solid lightgray";
+                    header.style.zIndex = "50";
+                    header.style.padding = "0";
+                } else {
+                    header.style.backgroundColor = "inherit";
+                    header.style.borderBottom = "none";
+                    header.style.padding = "2%";
+                }
+            }
         });
     }, []);
+
+    useEffect(() => {
+        const updateWindowDimensions = () => {
+            const newWidth = window.innerWidth;
+            setWidth(newWidth);
+        };
+
+        window.addEventListener("resize", updateWindowDimensions);
+
+        return () =>
+            window.removeEventListener("resize", updateWindowDimensions);
+    }, []);
+
+    const navigate = useNavigate();
+    const { pathname } = useLocation();
+
+    const navigateHome = (place) => {
+        if (pathname !== "/portfolio") {
+            navigate("/portfolio");
+            setTimeout(() => scrollTo(place), 500);
+        } else {
+            scrollTo(place);
+        }
+    };
 
     return (
         <Grid container className={classes.headerContainer} id="header">
@@ -100,7 +131,7 @@ const Header = ({ classes, width, limit }) => {
                             color="secondary"
                             key="home-desktop"
                             id="header-home"
-                            onClick={() => scrollTo("home")}
+                            onClick={() => navigateHome("home")}
                         >
                             Home
                         </Typography>
@@ -108,7 +139,7 @@ const Header = ({ classes, width, limit }) => {
                             color="secondary"
                             key="services-desktop"
                             id="header-services"
-                            onClick={() => scrollTo("services-desktop")}
+                            onClick={() => navigateHome("services-desktop")}
                         >
                             Services
                         </Typography>
@@ -116,7 +147,7 @@ const Header = ({ classes, width, limit }) => {
                             color="secondary"
                             key="stack-desktop"
                             id="header-stack"
-                            onClick={() => scrollTo("stack-desktop")}
+                            onClick={() => navigateHome("stack-desktop")}
                         >
                             Tech
                         </Typography>
@@ -124,7 +155,7 @@ const Header = ({ classes, width, limit }) => {
                             color="secondary"
                             key="project-desktop"
                             id="header-projects"
-                            onClick={() => scrollTo("project-desktop")}
+                            onClick={() => navigateHome("project-desktop")}
                         >
                             Projects
                         </Typography>
@@ -132,9 +163,17 @@ const Header = ({ classes, width, limit }) => {
                             color="secondary"
                             key="contact-desktop"
                             id="header-contacts"
-                            onClick={() => scrollTo("contact-desktop")}
+                            onClick={() => navigateHome("contact-desktop")}
                         >
-                            Contacts
+                            Contact
+                        </Typography>
+                        <Typography
+                            color="secondary"
+                            key="blog"
+                            id="header-blog"
+                            onClick={() => navigate("/blog")}
+                        >
+                            Blog
                         </Typography>
                     </Grid>
                 )}
@@ -143,4 +182,4 @@ const Header = ({ classes, width, limit }) => {
     );
 };
 
-export default compose(withWindowConsumer, withStyles(useStyles))(Header);
+export default compose(withStyles(useStyles))(Header);

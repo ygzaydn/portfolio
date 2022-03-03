@@ -2,13 +2,13 @@ import React, { useEffect, useRef } from "react";
 import "./App.css";
 import Typed from "typed.js";
 
-import Header from "./components/header/headerComponent";
 import ContactForm from "./components/contactForm/contactForm";
 
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography, Button } from "@material-ui/core";
 import { withStyles } from "@material-ui/core";
 import BackgroundImage from "./images/background6.jpg";
 import BackgroundImageTech from "./images/background2.jpg";
+import { useNavigate } from "react-router";
 import { compose } from "recompose";
 
 import { withWindowProvider } from "./contexts/window/provider";
@@ -22,7 +22,8 @@ import DeveloperModeIcon from "@material-ui/icons/DeveloperMode";
 import CodeIcon from "@material-ui/icons/Code";
 import ColorizeIcon from "@material-ui/icons/Colorize";
 import ApiIcon from "@mui/icons-material/Api";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+
+import KeyboardArrowUp from "./components/keyboardArrowUp/keyboardArrowUp";
 
 import ICCImage from "./images/icc.jpg";
 import RidenrateImage from "./images/ridenrate.jpg";
@@ -82,7 +83,6 @@ const useStyles = () => ({
         justifyContent: "center",
         alignItems: "center",
     },
-
     contactContainer: {
         margin: "auto",
         justifyContent: "center",
@@ -120,53 +120,14 @@ const useStyles = () => ({
         gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
         justifyItems: "center",
     },
-    upScrollDiv: {
-        position: "fixed",
-        bottom: "25px",
-        right: "25px",
-        width: "50px",
-        backgroundColor: "rgb(75, 202, 135)",
-        borderRadius: "10px",
-        height: "50px",
-        display: "none",
-        justifyContent: "center",
-        alignItems: "center",
-        cursor: "pointer",
-        zIndex: 5000,
-
-        "& svg": {
-            height: 40,
-            width: 40,
-            fill: "white",
-        },
-    },
-    "@global": {
-        "@keyframes fade": {
-            "0%": {
-                opacity: "0",
-                display: "none",
-            },
-            "100%": {
-                opacity: "1",
-                display: "flex",
-            },
-        },
-        "@keyframes reverseFade": {
-            "0%": {
-                opacity: "1",
-                display: "flex",
-            },
-            "100%": {
-                opacity: "0",
-                display: "none",
-            },
-        },
+    button: {
+        marginTop: "2rem",
     },
 });
 
 const App = ({ classes, width, height, firebase, limit }) => {
     const el = useRef("");
-    const scrollRef = useRef(null);
+    const navigate = useNavigate();
     useEffect(() => {
         const typed = new Typed(el.current, {
             strings: ["erolyagizaydin"],
@@ -182,53 +143,21 @@ const App = ({ classes, width, height, firebase, limit }) => {
         };
     }, []);
 
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-
-    const handleScroll = () => {
-        if (scrollRef.current !== null) {
-            const style = scrollRef.current.style;
-            if (window.pageYOffset < 150) {
-                style.animationName = "reverseFade";
-                style.animationDuration = ".4s";
-                style.animationFillMode = "forwards";
-            } else {
-                style.animationName = "fade";
-                style.animationDuration = ".4s";
-                style.animationFillMode = "forwards";
-                style.display = "flex";
-            }
-        }
-    };
-
-    const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
     return (
         <Grid container>
-            <div
-                className={classes.upScrollDiv}
-                onClick={() => {
-                    scrollToTop();
-                }}
-                ref={scrollRef}
-            >
-                <KeyboardArrowUpIcon />
-            </div>
-            <Header />
+            <KeyboardArrowUp />
             <Grid container style={{ height: "100vh" }}>
                 <Grid container className={classes.homepageContainer} id="home">
                     <Grid
                         item
-                        xs={6}
+                        xs={12}
                         style={{
                             height: "100%",
-                            paddingLeft: "20%",
                             display: "flex",
                             flexDirection: "column",
                             alignItems: "flex-start",
                             marginTop: limit > width ? "0" : "5rem",
+                            paddingLeft: "10%",
                         }}
                     >
                         <Typography
@@ -240,7 +169,7 @@ const App = ({ classes, width, height, firebase, limit }) => {
                         <Typography
                             variant="h4"
                             style={{
-                                textAlign: "start",
+                                textAlign: "end",
                                 color: "rgb(75, 202, 135)",
                                 fontWeight: "600",
                                 fontSize: limit > width ? "1.5rem" : "4.5rem",
@@ -250,12 +179,19 @@ const App = ({ classes, width, height, firebase, limit }) => {
                         />
                         <Typography
                             variant="h4"
-                            style={{ color: "white", textAlign: "start" }}
+                            style={{ color: "white", textAlign: "end" }}
                         >
                             a web developer
                         </Typography>
+                        <Button
+                            color="secondary"
+                            onClick={() => navigate("/blog")}
+                            className={classes.button}
+                            variant="contained"
+                        >
+                            Check out my blog!
+                        </Button>
                     </Grid>
-                    <Grid item xs={6} />
                 </Grid>
                 <Grid
                     container
