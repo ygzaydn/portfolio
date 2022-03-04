@@ -54,7 +54,7 @@ const TechStack = ({ classes, setTopic }) => {
                     item
                     xs={12}
                     className={classes.logoGrid}
-                    onClick={() => setTopic(el.name.toLowerCase())}
+                    onClick={() => setTopic(el.key)}
                 >
                     <img
                         src={require(`../../logo/${el.logo}.svg`).default}

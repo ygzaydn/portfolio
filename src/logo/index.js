@@ -12,8 +12,9 @@ export const technologies = [
 ];
 
 export const blogTechnologies = [
-    { name: "React", logo: "react-logo" },
-    { name: "Redux", logo: "redux-logo" },
-    { name: "Typescript", logo: "typescript-logo" },
-    { name: "Firebase", logo: "firebase-logo" },
+    { name: "All posts", logo: "all-logo", key: null },
+    { name: "React", logo: "react-logo", key: "react" },
+    { name: "Redux", logo: "redux-logo", key: "redux" },
+    { name: "Typescript", logo: "typescript-logo", key: "typescript" },
+    { name: "Firebase", logo: "firebase-logo", key: "firebase" },
 ];

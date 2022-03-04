@@ -9,6 +9,8 @@ import { useParams } from "react-router";
 
 import Background from "../../images/background4.jpg";
 import rehypeHighlight from "remark-rehype";
+import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = () => ({
     backgroundContainer: {
@@ -38,6 +40,13 @@ const useStyles = () => ({
         "& h6": {
             textAlign: "end",
         },
+        "& svg": {
+            cursor: "pointer",
+            position: "absolute",
+            height: "2rem",
+            width: "2rem",
+            top: "15%",
+        },
     },
     markdownContainer: {
         display: "flex",
@@ -49,33 +58,38 @@ const useStyles = () => ({
         flexDirection: "column",
         alignItems: "flex-start",
         padding: "1vh 4rem",
-        overflow: "auto",
+        overflowX: "auto",
         marginBottom: "10rem",
         textAlign: "start",
         fontSize: "160%",
+
         "@media only screen and (max-width:900px)": {
             padding: "1vh .6rem",
         },
         "& pre": {
-            margin: "0 1rem",
-            padding: "3rem 1rem 1rem 1rem",
+            border: ".2px solid black",
+            margin: "1rem 2rem",
+            padding: "2rem 1rem 2rem 1rem",
             backgroundColor: "#ead9d9",
             maxWidth: "80vw",
-            overflow: "auto",
             position: "relative",
             "@media only screen and (max-width:900px)": {
                 width: "70vw",
             },
+            outlineStyle: "solid",
+            outlineWidth: "1rem",
+            outlineColor: "#ead9d9",
             "&:after": {
                 content: "'</> Code'",
                 textAlign: "center",
                 backgroundColor: "#ead9d9",
                 position: "absolute",
-                top: ".4rem",
+                top: "-.5rem",
                 left: "1rem",
                 zIndex: 55,
                 overflow: "auto",
-                borderBottom: "1px solid red",
+                padding: "0 1rem",
+                border: ".1px solid black",
             },
         },
     },
@@ -85,7 +99,7 @@ const TechStack = ({ classes }) => {
     const [myMarkdown, setMyMarkdown] = useState(null);
     const [info, setInfo] = useState(null);
     const { id } = useParams();
-
+    const navigate = useNavigate();
     useEffect(() => {
         const postInfo = blogPosts.filter((el) => el.key === id)[0];
         setInfo({ title: postInfo.title, date: postInfo.createDate });
@@ -102,6 +116,7 @@ const TechStack = ({ classes }) => {
             <Grid container className={classes.backgroundContainer}>
                 {info && (
                     <Grid item xs={12} sm={6} className={classes.infoGrid}>
+                        <KeyboardReturnIcon onClick={() => navigate("/blog")} />
                         <Typography variant="h4">{info.title}</Typography>
                         <Typography variant="subtitle2">{info.date}</Typography>
                     </Grid>
