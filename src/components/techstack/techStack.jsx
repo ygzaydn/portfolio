@@ -4,17 +4,6 @@ import { Grid, Typography, withStyles } from "@material-ui/core";
 import { compose } from "recompose";
 import { withWindowConsumer } from "../../contexts/window/consumer";
 
-import { ReactComponent as CSSLogo } from "../../logo/css-logo.svg";
-import { ReactComponent as FirebaseLogo } from "../../logo/firebase-logo.svg";
-import { ReactComponent as HTMLLogo } from "../../logo/html5-logo.svg";
-import { ReactComponent as JavascriptLogo } from "../../logo/javascript-logo.svg";
-import { ReactComponent as MongodbLogo } from "../../logo/mongodb-logo.svg";
-import { ReactComponent as MuiLogo } from "../../logo/mui-logo.svg";
-import { ReactComponent as NodejsLogo } from "../../logo/nodejs-logo.svg";
-import { ReactComponent as ReactLogo } from "../../logo/react-logo.svg";
-import { ReactComponent as ReduxLogo } from "../../logo/redux-logo.svg";
-import { ReactComponent as SaasLogo } from "../../logo/saas-logo.svg";
-
 import { technologies } from "../../logo";
 
 const useStyles = () => ({

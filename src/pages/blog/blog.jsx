@@ -82,6 +82,9 @@ const useStyles = () => ({
     },
     whiteColor: {
         color: "#fff",
+        "@media only screen and (max-width:900px)": {
+            fontSize: "125%",
+        },
     },
 });
 
@@ -145,6 +148,10 @@ const Blog = ({ classes }) => {
                                         <Typography
                                             variant="h6"
                                             className={classes.whiteColor}
+                                            style={{
+                                                marginRight: "auto",
+                                                paddingLeft: ".6rem",
+                                            }}
                                         >
                                             {title}
                                         </Typography>

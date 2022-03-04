@@ -20,6 +20,8 @@
     "react-router-dom": "^6.2.2",
     "react-scripts": "4.0.0",
     "recompose": "^0.30.0",
+    "rehype-raw": "^6.1.1",
+    "remark-rehype": "^10.1.0",
     "typed.js": "^2.0.12",
     "uuid4": "^2.0.2",
     "web-vitals": "^0.2.4"

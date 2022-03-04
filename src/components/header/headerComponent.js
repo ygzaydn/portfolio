@@ -72,7 +72,7 @@ const Header = ({ classes }) => {
             if (y) {
                 header.style.backgroundColor = "black";
                 header.style.borderBottom = "0.2px solid lightgray";
-                header.style.zIndex = "50";
+                header.style.zIndex = "500";
                 header.style.padding = "0";
             } else {
                 header.style.backgroundColor = "inherit";
@@ -88,7 +88,7 @@ const Header = ({ classes }) => {
                 if (y) {
                     header.style.backgroundColor = "black";
                     header.style.borderBottom = "0.2px solid lightgray";
-                    header.style.zIndex = "50";
+                    header.style.zIndex = "500";
                     header.style.padding = "0";
                 } else {
                     header.style.backgroundColor = "inherit";

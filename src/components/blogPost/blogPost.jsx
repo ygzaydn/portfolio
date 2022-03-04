@@ -8,6 +8,7 @@ import { blogPosts } from "../../blog/index";
 import { useParams } from "react-router";
 
 import Background from "../../images/background4.jpg";
+import rehypeHighlight from "remark-rehype";
 
 const useStyles = () => ({
     backgroundContainer: {
@@ -24,13 +25,15 @@ const useStyles = () => ({
         bottom: 0,
         left: 0,
         minWidth: "50%",
-        backgroundColor: "#f1f1f1",
+        backgroundColor: "#f1f1f191",
         display: "flex",
         flexDirection: "column",
-        padding: "1rem 4rem",
+        padding: "1rem 2rem",
+        borderBottom: "1px solid black",
         "& h4": {
-            display: "inline",
-            fontSize: "3rem",
+            width: "100%",
+            fontSize: "2.15rem",
+            marginBottom: "1rem",
         },
         "& h6": {
             textAlign: "end",
@@ -51,16 +54,28 @@ const useStyles = () => ({
         textAlign: "start",
         fontSize: "160%",
         "@media only screen and (max-width:900px)": {
-            padding: "1vh .4rem",
+            padding: "1vh .6rem",
         },
         "& pre": {
             margin: "0 1rem",
-            padding: "3rem 1rem",
+            padding: "3rem 1rem 1rem 1rem",
             backgroundColor: "#ead9d9",
             maxWidth: "80vw",
             overflow: "auto",
+            position: "relative",
             "@media only screen and (max-width:900px)": {
-                width: "80vw",
+                width: "70vw",
+            },
+            "&:after": {
+                content: "'</> Code'",
+                textAlign: "center",
+                backgroundColor: "#ead9d9",
+                position: "absolute",
+                top: ".4rem",
+                left: "1rem",
+                zIndex: 55,
+                overflow: "auto",
+                borderBottom: "1px solid red",
             },
         },
     },
@@ -94,7 +109,9 @@ const TechStack = ({ classes }) => {
             </Grid>
 
             <Grid container className={classes.markdownGrid}>
-                <ReactMarkdown>{myMarkdown}</ReactMarkdown>
+                <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
+                    {myMarkdown}
+                </ReactMarkdown>
             </Grid>
         </>
     );
