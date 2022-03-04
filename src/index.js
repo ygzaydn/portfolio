@@ -12,6 +12,7 @@ import Firebase, { FirebaseContext } from "./contexts/firebase/";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Blog from "./pages/blog/blog";
 import Header from "./components/header/headerComponent";
+import BlogPost from "./components/blogPost/blogPost";
 
 ReactDOM.render(
     <FirebaseContext.Provider value={new Firebase()}>
@@ -21,6 +22,7 @@ ReactDOM.render(
                 <Routes>
                     <Route path="/portfolio" element={<App />} />
                     <Route path="/blog" element={<Blog />} />
+                    <Route path="/blog/:id" element={<BlogPost />} />
                 </Routes>
             </BrowserRouter>
         </ThemeProvider>

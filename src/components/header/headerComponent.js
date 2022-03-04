@@ -26,6 +26,11 @@ const useStyles = () => ({
         "& p": {
             fontSize: "2rem",
         },
+        cursor: "pointer",
+
+        "&:hover #lastname": {
+            color: "#4BFFA5 !important",
+        },
     },
     menuGrid: {
         display: "flex",
@@ -121,9 +126,21 @@ const Header = ({ classes }) => {
     return (
         <Grid container className={classes.headerContainer} id="header">
             <Grid container className={classes.headerMaxWidthGrid}>
-                <Grid item xs={12} sm={4} className={classes.nameGrid}>
+                <Grid
+                    item
+                    xs={12}
+                    sm={4}
+                    className={classes.nameGrid}
+                    onClick={() => navigate("/portfolio")}
+                >
                     <Typography color="secondary">erolyagiz</Typography>
-                    <Typography color="error">aydin</Typography>
+                    <Typography
+                        color="error"
+                        id="lastname"
+                        style={{ transition: "all .4s" }}
+                    >
+                        aydin
+                    </Typography>
                 </Grid>
                 {width > limit && (
                     <Grid item xs={5} className={classes.menuGrid}>

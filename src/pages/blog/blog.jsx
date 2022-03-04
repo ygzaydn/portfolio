@@ -8,6 +8,7 @@ import BlogTechGrid from "../../components/blogTechGrid/blogTechGrid";
 
 import { blogPosts } from "../../blog/index";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = () => ({
     blogHeadGrid: {
@@ -19,7 +20,11 @@ const useStyles = () => ({
     },
     blogTitle: {
         color: "rgb(75, 202, 135)",
+
         paddingTop: "5rem",
+        "@media only screen and (max-width:900px)": {
+            paddingTop: "2rem",
+        },
     },
     innerGrid: {
         backgroundColor: "#000000d2",
@@ -30,22 +35,37 @@ const useStyles = () => ({
         overflow: "auto",
         display: "flex",
         flexDirection: "column",
+
+        "@media only screen and (max-width:900px)": {
+            height: "inherit",
+            margin: "2rem 1rem",
+            maxHeight: "20rem",
+            padding: "1rem .4rem",
+        },
     },
     contentGrid: {
         marginTop: "5rem",
         padding: "2rem 4rem",
+        "@media only screen and (max-width:900px)": {
+            padding: "0.2rem 0.4rem",
+            margin: "1rem 0",
+        },
     },
     innerTitle: {
         color: "#fff",
         padding: "1rem 2rem 3rem 2rem",
+        "@media only screen and (max-width:900px)": {
+            padding: "1rem 2rem",
+        },
     },
     postDetailGrid: {
         display: "flex",
         maxHeight: "5rem",
         alignItems: "center",
-        justifyContent: "space-around",
+        justifyContent: "space-between",
         cursor: "pointer",
         padding: "1rem 2rem",
+        textAlign: "start",
         transition: "all .4s",
         margin: "0 0 1rem 0",
         "&:hover": {
@@ -56,6 +76,9 @@ const useStyles = () => ({
             height: "4rem",
             width: "auto",
         },
+        "@media only screen and (max-width:900px)": {
+            padding: "1rem 0.2rem",
+        },
     },
     whiteColor: {
         color: "#fff",
@@ -65,6 +88,7 @@ const useStyles = () => ({
 const Blog = ({ classes }) => {
     const [mytopic, setMyTopic] = useState(null);
     const [filteredBlogPosts, setFilteredBlogPosts] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (mytopic === null) {
@@ -89,7 +113,7 @@ const Blog = ({ classes }) => {
                                 variant="h6"
                                 className={classes.innerTitle}
                             >
-                                Post distribution
+                                Topics
                             </Typography>
                             <BlogTechGrid setTopic={setMyTopic} />
                         </Grid>
@@ -103,12 +127,13 @@ const Blog = ({ classes }) => {
                                 Posts
                             </Typography>
                             {filteredBlogPosts.map(
-                                ({ title, logoName, createDate }) => (
+                                ({ title, logoName, createDate, key }) => (
                                     <Grid
                                         item
                                         xs={12}
                                         key={title}
                                         className={classes.postDetailGrid}
+                                        onClick={() => navigate(`/blog/${key}`)}
                                     >
                                         <img
                                             src={
