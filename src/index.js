@@ -15,19 +15,19 @@ import Header from "./components/header/headerComponent";
 import BlogPost from "./components/blogPost/blogPost";
 
 ReactDOM.render(
-    <FirebaseContext.Provider value={new Firebase()}>
-        <ThemeProvider theme={theme}>
-            <BrowserRouter>
-                <Header />
-                <Routes>
-                    <Route path="/portfolio" element={<App />} />
-                    <Route path="/blog" element={<Blog />} />
-                    <Route path="/blog/:id" element={<BlogPost />} />
-                </Routes>
-            </BrowserRouter>
-        </ThemeProvider>
-    </FirebaseContext.Provider>,
-    document.getElementById("root")
+  <FirebaseContext.Provider value={new Firebase()}>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
+  </FirebaseContext.Provider>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
