@@ -11,7 +11,7 @@ On class components, we use methods like *componentDidMount()*, *componentWillUn
 
 useEffect() hook accepts 2 arguments:
 
-```
+```ts
 useEffect(callback, [dependencies]);
 ```
 
@@ -29,7 +29,7 @@ However, you can find detailed information on [official document](https://reactj
 
 For TypeScript usage, you dont need to provide any extra typings. TypeScript will check that the method signature of the function you provide is correct. Both of *useEffect* and *useLayoutEffect* are used for performing side effects and return an optional cleanup function which means if they don't deal with returning values, no types are necessary. When using useEffect, take care not to return anything other than a function or undefined, otherwise both TypeScript and React will yell at you. This can be subtle when using arrow functions:
 
-```
+```ts
 const DelayedEffect = (props: { timerMs: number }) => {
   const { timerMs } = props;
 

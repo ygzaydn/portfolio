@@ -2,13 +2,13 @@
 
 ## React Router
 
-```
+```js
 npm install react-router-dom
 ```
 
 Best place to place routing logic is App component.
 
-```
+```js
 // on app.js
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 ...
@@ -27,7 +27,7 @@ We use Router component from 'react-router-dom' package to wrap up our Routes, i
 
 On the pages we want to route from, we need to use Link component from 'react-router-dom' package.
 
-```
+```js
 import {Link} from 'react-router-dom'
 ...
 <Link to={place-to-go}>Link</Link>
@@ -36,14 +36,14 @@ import {Link} from 'react-router-dom'
 ## Firebase
 Firebase enables realtime databases, extensive authentication and authorization, deployment. You can build real-world applications with React & Firebase without worrying about back-end.
 
-```
+```js
 npm install firebase
 ```
 To run firebase for your application, you have to get your firebase credentials from firebase website. 
 
 Its under general options on project page. Similar config file is attached below:
 
-```
+```js
  var firebaseConfig = {
     apiKey: "AIzaSyDw42F5UkRgcoXasdasdrvweBhzxDZoNICAdT7YQ",
     authDomain: "react-firebase-authentic-5ae39qweqwe.firebaseapp.com",
@@ -59,7 +59,7 @@ You can either use those variables directly, or hide them behind *.env* files.
 
 In order to create a Firebase Class, we need to create a Firebase Component in React.
 
-```
+```js
 //on Firebase/firebase.js
 import app from 'firebase/app'
 const config = {
@@ -80,7 +80,7 @@ We've created a Firebase class, now its time to connect it with our React App. T
 
 Firstly, we have to create a Firebase Context.
 
-```
+```js
 //on Firebase/context.js
 
 import React from 'react'
@@ -95,7 +95,7 @@ export default FirebaseContext;
 
 As a second step, we will create a HOC that covers Firebase Context.
 
-```
+```js
 on Firebase/index.js
 
 import React from 'react'
@@ -114,7 +114,7 @@ export { FirebaseContext }
 
 We've used the Consumer component of FirebaseContext, so we need to wrap it up with a Provider. The top level of our project (index.js) is a right place to use Provider.
 
-```
+```js
 //on index.js
 
 import React from 'react'
@@ -135,7 +135,7 @@ Now, any component that we wrap up with withFirebase HOC, will have firebase pro
 ### Firebase's Authentication API
 As an entrance point of Firebase, we'd have firebase's authentication API in our project. We can import it on our Firebase class.
 
-```
+```js
 //on Firebase/firebase.js
 import 'firebase/auth';
 ...
@@ -157,11 +157,11 @@ app.auth() gives us several methods that are useful:
 
 to use those methods, we have to add them in our Firebase class.
 
-```
+```js
 //on Firebase/firebase.js
 	...
 	this.auth=app.auth();
-	}
+	
 
 	doCreateUserWithEmailAndPassword = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
@@ -175,7 +175,7 @@ There are some cases we want to redirect the user to another page(e.g routing to
 
 To do so, we need to use React Router's *withRouter* HOC. We take history as an input prop, and play with it.
 
-```
+```js
 import { withRouter } from 'react-router-dom'
 
 const ComponentNameBase = ({history}) => {
@@ -188,12 +188,12 @@ const ComponentName = withRouter(withFirebase(ComponentNameBase))
 
 #### Recompose package
 A package to combine different HOC's for a component.
-```
+```js
 npm install recompose
 ```
 
 Usage:
-```
+```js
 import {compose} from 'recompose'
 const ComponentName = withRouter(withFirebase(ComponentNameBase)) OR
 const ComponentName = compose(withRouter, withFirebase)(ComponentNameBase)
@@ -204,7 +204,7 @@ Logic regarding the current authenticated user needs to be stored and made acces
 
 To get information about current user, we use ```auth.onAuthStateChanged``` method. Lets look it in details:
 
-```
+```js
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     // User is signed in.
@@ -217,7 +217,7 @@ firebase.auth().onAuthStateChanged((user) => {
 Main logic that we'll use is to catch user with ```onAuthStateChanged``` and conditional render our components whether we have logged user or not. To do this operation we can again use a HOC, which is named as *withAuthentication*
 
 Let's define Context API for Authentication.
-```
+```js
 //on Session/Context.js
 import React from 'react'
 const AuthUserContext = React.createContext(null)
@@ -255,7 +255,7 @@ Notice that this HOC provides Context.Provider not Context.Consumer, so this is 
 
 So our withAuthentication will wrap up our App component.
 
-```
+```js
 //App.js
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -303,7 +303,7 @@ We can define some conditions for rendering like:
 
 Like the withAuthentication HOC, we can define withAuthorization HOC which uses AuthUserContext.Provider mechanism to protect content from particular users or guests.
 
-```
+```js
 //on Session/withAuthorization
 
 import React, withRouter, compose, AuthUserContext, withFirebase, useEffect, * as ROUTES
@@ -335,7 +335,7 @@ Notice that we've user AuthUserContext.Consumer this time (on withAuthentication
 
 To call it:
 
-```
+```js
 //on Account/index.js
 
 import React from 'react'
