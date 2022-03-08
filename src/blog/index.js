@@ -31,4 +31,12 @@ export const blogPosts = [
         createDate: "07 March 2022",
         key: "4",
     },
+    {
+        topic: "react",
+        title: "React Context and useContext() Hook",
+        name: "useContext",
+        logoName: "react-logo",
+        createDate: "08 March 2022",
+        key: "5",
+    },
 ];
