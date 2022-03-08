@@ -3,14 +3,18 @@
 ---
 ## Table of Contents
 
+
+
 - [React Router](#react-router)
 - [Firebase](#firebase)
 	- [Firebase in React](#firebase-in-react)
-	- [Firebase's Authentication API](#firebases-authentication-api)
+	- [Firebase's Authentication API](#firebase-s-authentication-api)
 		- [withRouter HOC](#withrouter-hoc)
 		- [Recompose package](#recompose-package)
 	- [Session Handling with Higher-Order Components](#session-handling-with-higher-order-components)
-	- [Authorization\(1\): General Authorization and Route Protection](#authorization1-general-authorization-and-route-protection)
+	- [Authorization\(1\): General Authorization and Route Protection](#authorization-1---general-authorization-and-route-protection)
+
+
 
 
 ---
