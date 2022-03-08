@@ -1,6 +1,21 @@
 # useState with TypeScript
 We all know that the importance of TypeScript. TypeScript allows us to check our code before runtime - thanks to type checking. So in this article, I'd deeply look into usage of useState hook with Typescript.
 I will introduce useState briefly, than will move on usage of it with TypeScript.
+
+
+---
+
+## Table of Contents
+<!-- MarkdownTOC -->
+
+- [useState](#usestate)
+- [useState with TypeScript](#usestate-with-typescript)
+
+<!-- /MarkdownTOC -->
+
+---
+
+<a id="usestate"></a>
 ## useState
 
 As stated in [official react documentation](https://reactjs.org/docs/hooks-reference.html#usestate), useState *returns a stateful value, and a function to update it.* We basically use useState when we're dealing with functional components instead of class ones. And to get a state value, we have to use useState hook.
@@ -13,6 +28,7 @@ setState(newState);
 ```
 During subsequent re-renders, the first value returned by useState will always be the most recent state after applying updates.
 >React guarantees that setState function identity is stable and won’t change on re-renders. This is why it’s safe to omit from the useEffect or useCallback dependency list.
+<a id="usestate-with-typescript"></a>
 ## useState with TypeScript
 To use useState hook with TypeScript, we have to add new information to it. As indicated above, TypeScript does type checking before moving on, so we have to define a type on our useState declaration.
 ```ts

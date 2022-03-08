@@ -2,6 +2,27 @@
 
 In this article, I'll go into array methods, and how can be used on different scenarios to make it more clear. More details can be found on [MDN Resources](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array?retiredLocale=tr). This article focuses on the most practical ones, and the ones that I use generally. Please note that memorizing those methods will not help you, the main goal is to have the insight, I mean to have knowledge to attack problems.
 
+---
+## Table of Contents
+
+<!-- MarkdownTOC -->
+
+- [slice\(\)](#slice)
+- [splice\(\)](#splice)
+- [reverse\(\)](#reverse)
+- [concat\(\)](#concat)
+- [join\(\)](#join)
+- [at\(\)](#at)
+- [forEach\(\)](#foreach)
+- [map\(\)](#map)
+- [reduce\(\)](#reduce)
+
+<!-- /MarkdownTOC -->
+
+---
+
+
+<a id="slice"></a>
 ## slice()
 
 Helps us to slice arrays(extracting particular parts). Does not mutate original array. Copies array and returns this array which is filtered only desired part. *slice* method takes two -optional- parameters.
@@ -25,6 +46,7 @@ console.log(arr.slice()); // ['a','b','c','d','e']
 console.log([..arr]); // spread operator also creates shallow copy ['a','b','c','d','e']
 ```
 
+<a id="splice"></a>
 ## splice()
 
 Splice method works almost same way with *slice*. Fundamental difference that *splice* methods **mutates original array.** The way that *splice* works is similar with *slice*. It takes two optional parameters. First parameter is the place that we want to start. Second parameter determines the length that we want to remove.
@@ -41,6 +63,7 @@ arr.splice(-1); // deletes last element from array
 console.log(arr); // ['a']
 ```
 
+<a id="reverse"></a>
 ## reverse()
 
 Reverses the array. This method **mutates the original array.**
@@ -54,6 +77,7 @@ console.log(arr); // ['f','g','h','i','j']
 
 ```
 
+<a id="concat"></a>
 ## concat()
 
 Concatenates the array.
@@ -71,6 +95,7 @@ console.log([...arr,...arr2]); // ['a','b','c','d','e','f','g','h','i','j'] mode
 
 This method **does not mutate any array.**
 
+<a id="join"></a>
 ## join()
 
 Convert array to a string with the character we specify.
@@ -79,6 +104,7 @@ Convert array to a string with the character we specify.
 console.log(letters.join('-')); "a-b-c-d-e-f-g-h-i-j"
 ```
 
+<a id="at"></a>
 ## at()
 
 *at* method is new. It helps to get specific index on an array.
@@ -106,6 +132,7 @@ console.log(arr.at(-2)); / / 11
 
 > *add* method works on strings aswell.
 
+<a id="foreach"></a>
 ## forEach()
 
 Helps us to loop arrays. This methods is very niche one, lots of developer need to use it. It basically iterate every array element with given callback function. forEach calls callback function on each element of an array. 
@@ -196,6 +223,7 @@ currenciesUnique.forEach((value, _, map)=>{
 /* returns USD: USD, GBP: GBP, EUR: EUR */
 ```
 
+<a id="map"></a>
 ## map()
 
 `map()` method is similar to `forEach()` method, but the main difference is that **`map()` method returns a completely new array instead of dealing with current one.** The conversion between present and new array should be defined in callback function.
@@ -219,6 +247,7 @@ console.log(movementsUSDfor); // [220,495,-440,3300,-715,-143,77,1430]
 
 `map()` method callback function takes 3 arguments which are same with forEach case.
 
+<a id="reduce"></a>
 ## reduce()
 
 Reduce method is used to calculate a value by passing every element on an array. Understanding *reduce* method is very important yet harder than the other array methods. Reduce method takes 2 input. First input is callback function, second one is for initial value.

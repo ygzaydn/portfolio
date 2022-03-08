@@ -1,5 +1,25 @@
 # React with Firebase
 
+---
+## Table of Contents
+
+<!-- MarkdownTOC -->
+
+- [React Router](#react-router)
+- [Firebase](#firebase)
+	- [Firebase in React](#firebase-in-react)
+	- [Firebase's Authentication API](#firebases-authentication-api)
+		- [withRouter HOC](#withrouter-hoc)
+		- [Recompose package](#recompose-package)
+	- [Session Handling with Higher-Order Components](#session-handling-with-higher-order-components)
+	- [Authorization\(1\): General Authorization and Route Protection](#authorization1-general-authorization-and-route-protection)
+
+<!-- /MarkdownTOC -->
+
+
+---
+
+<a id="react-router"></a>
 ## React Router
 
 ```js
@@ -33,6 +53,7 @@ import {Link} from 'react-router-dom'
 <Link to={place-to-go}>Link</Link>
 ```
 
+<a id="firebase"></a>
 ## Firebase
 Firebase enables realtime databases, extensive authentication and authorization, deployment. You can build real-world applications with React & Firebase without worrying about back-end.
 
@@ -74,6 +95,7 @@ class Firebase {
 export default Firebase;
 ```
 
+<a id="firebase-in-react"></a>
 ### Firebase in React
 
 We've created a Firebase class, now its time to connect it with our React App. To do it, we will use React Context API, and wrap our components under the Firebase Context.
@@ -132,6 +154,7 @@ ReactDOM.render(
 
 Now, any component that we wrap up with withFirebase HOC, will have firebase props, which we can react and use it.
 
+<a id="firebases-authentication-api"></a>
 ### Firebase's Authentication API
 As an entrance point of Firebase, we'd have firebase's authentication API in our project. We can import it on our Firebase class.
 
@@ -170,6 +193,7 @@ to use those methods, we have to add them in our Firebase class.
     this.auth.signInWithEmailAndPassword(email, password);
     ...
 ```
+<a id="withrouter-hoc"></a>
 #### withRouter HOC
 There are some cases we want to redirect the user to another page(e.g routing to home page after log-in)
 
@@ -186,6 +210,7 @@ const ComponentNameBase = ({history}) => {
 const ComponentName = withRouter(withFirebase(ComponentNameBase))
 ```
 
+<a id="recompose-package"></a>
 #### Recompose package
 A package to combine different HOC's for a component.
 ```js
@@ -199,6 +224,7 @@ const ComponentName = withRouter(withFirebase(ComponentNameBase)) OR
 const ComponentName = compose(withRouter, withFirebase)(ComponentNameBase)
 ```
 
+<a id="session-handling-with-higher-order-components"></a>
 ### Session Handling with Higher-Order Components
 Logic regarding the current authenticated user needs to be stored and made accessible other components. There is where we use Redux or MobX. On our particular ptoject, we use local state under App component.
 
@@ -291,6 +317,7 @@ const App = () => {
 export default withAuthentication(App);
 ```
 
+<a id="authorization1-general-authorization-and-route-protection"></a>
 ### Authorization(1): General Authorization and Route Protection
 
 Protection for routes = authorization

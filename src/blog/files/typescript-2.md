@@ -1,6 +1,22 @@
 # useEffect with TypeScript
 We all know that the importance of TypeScript. TypeScript allows us to check our code before runtime - thanks to type checking. So in this article, I'd deeply look into usage of useEffect hook with Typescript.
 I will introduce useEffect briefly, than will move on usage of it with TypeScript.
+
+
+---
+## Table of Contents
+
+<!-- MarkdownTOC -->
+
+- [useEffect](#useeffect)
+- [useEffect with TypeScript](#useeffect-with-typescript)
+
+<!-- /MarkdownTOC -->
+
+---
+
+
+<a id="useeffect"></a>
 ## useEffect
 
 The motivation behind the introduction of useEffect Hook is to eliminate the side-effects.
@@ -25,6 +41,7 @@ The detailed usage of *useEffect()* hook will be explained on different article.
 However, you can find detailed information on [official document](https://reactjs.org/docs/hooks-reference.html#useeffect)
 
 
+<a id="useeffect-with-typescript"></a>
 ## useEffect with TypeScript
 
 For TypeScript usage, you dont need to provide any extra typings. TypeScript will check that the method signature of the function you provide is correct. Both of *useEffect* and *useLayoutEffect* are used for performing side effects and return an optional cleanup function which means if they don't deal with returning values, no types are necessary. When using useEffect, take care not to return anything other than a function or undefined, otherwise both TypeScript and React will yell at you. This can be subtle when using arrow functions:
