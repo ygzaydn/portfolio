@@ -39,4 +39,12 @@ export const blogPosts = [
         createDate: "08 March 2022",
         key: "5",
     },
+    {
+        topic: "react",
+        title: "Memoization and useMemo() Hook",
+        name: "useMemo",
+        logoName: "react-logo",
+        createDate: "30 March 2022",
+        key: "6",
+    },
 ];

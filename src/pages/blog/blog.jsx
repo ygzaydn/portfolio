@@ -29,7 +29,7 @@ const useStyles = () => ({
     innerGrid: {
         backgroundColor: "#000000d2",
         borderRadius: 20,
-        padding: "1rem 2rem",
+        padding: "0 2rem 1rem 2rem",
         margin: "0 2rem",
         height: "30rem",
         overflow: "auto",
@@ -45,7 +45,7 @@ const useStyles = () => ({
     innerGridTopic: {
         backgroundColor: "#000000d2",
         borderRadius: 20,
-        padding: "1rem 2rem",
+        padding: "0 2rem 1rem 2rem",
         margin: "0 2rem",
         height: "30rem",
         overflow: "auto",
@@ -68,13 +68,11 @@ const useStyles = () => ({
     },
     innerTitle: {
         color: "#fff",
-        padding: "1rem 2rem 3rem 2rem",
-        "@media only screen and (max-width:900px)": {
-            padding: "1rem 2rem",
-            position: "sticky",
-            top: 0,
-            background: "black",
-        },
+        padding: "1rem 2rem",
+        position: "sticky",
+        top: 0,
+        background: "black",
+        zIndex: 60,
     },
     postDetailGrid: {
         display: "flex",
