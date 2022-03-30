@@ -163,13 +163,7 @@ function HeadingRenderer(props) {
     var slug = text.toLowerCase().replace(/\W/g, "-");
     return React.createElement("h" + props.level, { id: slug }, props.children);
 }
-HTMLElement.prototype.scrollIntoView = function () {
-    console.log("asd");
-    window.scrollBy(
-        0,
-        this.getBoundingClientRect().top - (window.innerHeight > 50)
-    );
-};
+
 const TechStack = ({ classes }) => {
     const [myMarkdown, setMyMarkdown] = useState(null);
     const [info, setInfo] = useState(null);
