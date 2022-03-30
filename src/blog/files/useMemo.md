@@ -99,6 +99,4 @@ As a conclsion, `useMemo(() => computation(a, b), [a, b])` is the hook that lets
 
 You always should consider those kinds of enhancements on your React app to be an React expert. Those small improvements, will have much more effect as time goes on.
 
-On this post, I've tried to explain `useMemo()` hook that React serves us. I hope this post will help you on your journey. 
-
-Take care!
+On this post, I've tried to explain `useMemo()` hook that React serves us.
