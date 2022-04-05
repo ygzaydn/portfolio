@@ -180,6 +180,24 @@ const TechStack = ({ classes }) => {
                 })
         );
     }, []);
+
+    useEffect(() => {
+        if (document.querySelectorAll('a[href^="#"]')) {
+            const documents = document.querySelectorAll('a[href^="#"]');
+
+            [].forEach.call(documents, function (el) {
+                el.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    document
+                        .querySelector(e.currentTarget.getAttribute("href"))
+                        .scrollIntoView({
+                            behavior: "smooth",
+                            block: "center",
+                        });
+                });
+            });
+        }
+    }, [myMarkdown]);
     return (
         <>
             <Grid container className={classes.backgroundContainer}>
@@ -201,8 +219,6 @@ const TechStack = ({ classes }) => {
                                 h3: HeadingRenderer,
                                 h4: HeadingRenderer,
                             }}
-                            react-context-with-usecontext--
-                            react-context-with-usecontext
                         >
                             {myMarkdown}
                         </ReactMarkdown>

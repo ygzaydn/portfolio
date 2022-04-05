@@ -13,7 +13,7 @@ In this article I'll dive into React Context and its usage thanks to `useContext
   - [Consuming Context](#consuming-context)
     - [Context.Consumer](#context-consumer)
     - [useContext hook](#usecontext-hook)
-- [React Context with useContext\(\)](#react-context-with-usecontext--)
+- [React Context with useContext](#react-context-with-usecontext--)
 
 ---
 

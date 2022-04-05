@@ -40,8 +40,8 @@ const useStyles = () => ({
 const TechStack = ({ classes }) => {
     return (
         <Grid container justifyContent="center" display="flex">
-            {technologies.map((el) => (
-                <Grid item xs={3} className={classes.logoGrid}>
+            {technologies.map((el, ind) => (
+                <Grid item xs={3} key={el.logo} className={classes.logoGrid}>
                     <img
                         src={require(`../../logo/${el.logo}.svg`).default}
                         alt={`${el.logo}`}

@@ -76,9 +76,8 @@ const useStyles = () => ({
     },
     postDetailGrid: {
         display: "flex",
-        maxHeight: "5rem",
+        maxHeight: "7rem",
         alignItems: "center",
-        justifyContent: "space-between",
         cursor: "pointer",
         padding: "1rem 2rem",
         textAlign: "start",
@@ -161,6 +160,7 @@ const Blog = ({ classes }) => {
                                                     .default
                                             }
                                             alt={`${logoName}`}
+                                            style={{ flex: 1 }}
                                         />
                                         <Typography
                                             variant="h6"
@@ -168,6 +168,7 @@ const Blog = ({ classes }) => {
                                             style={{
                                                 marginRight: "auto",
                                                 padding: "0 .6rem",
+                                                flex: 3,
                                             }}
                                         >
                                             {title}
@@ -175,6 +176,10 @@ const Blog = ({ classes }) => {
                                         <Typography
                                             variant="subtitle2"
                                             className={classes.whiteColor}
+                                            style={{
+                                                textAlign: "end",
+                                                flex: 1,
+                                            }}
                                         >
                                             {createDate}
                                         </Typography>

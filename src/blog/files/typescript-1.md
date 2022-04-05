@@ -11,8 +11,6 @@ I will introduce useState briefly, than will move on usage of it with TypeScript
 - [useState](#usestate)
 - [useState with TypeScript](#usestate-with-typescript)
 
-
-
 ---
 
 ## useState

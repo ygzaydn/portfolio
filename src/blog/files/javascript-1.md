@@ -7,17 +7,20 @@ In this article, I'll go into array methods, and how can be used on different sc
 
 
 
-- [slice\(\)](#slice)
-- [splice\(\)](#splice)
-- [reverse\(\)](#reverse)
-- [concat\(\)](#concat)
-- [join\(\)](#join)
-- [at\(\)](#at)
-- [forEach\(\)](#foreach)
-- [map\(\)](#map)
-- [reduce\(\)](#reduce)
-
-
+- [slice](#slice--)
+- [splice](#splice--)
+- [reverse](#reverse--)
+- [concat](#concat--)
+- [join](#join--)
+- [at](#at--)
+- [forEach](#foreach--)
+- [map](#map--)
+- [filter](#filter--)
+- [reduce](#reduce--)
+- [find](#find--)
+- [findIndex](#findindex--)
+- [some](#some--)
+- [every](#every--)
 
 ---
 
@@ -239,9 +242,25 @@ console.log(movementsUSDfor); // [220,495,-440,3300,-715,-143,77,1430]
 
 `map()` method callback function takes 3 arguments which are same with forEach case.
 
+## filter()
+
+`filter()` is used to filter array with given certain condition(callback function). This method **returns a new array.** It only displays the items that returns true on callback function.
+
+```
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const big = movements.filter(el => el > 1500);
+
+console.log(big); // [3000]
+```
+
 ## reduce()
 
-Reduce method is used to calculate a value by passing every element on an array. Understanding *reduce* method is very important yet harder than the other array methods. Reduce method takes 2 input. First input is callback function, second one is for initial value.
+Reduce method is used to calculate a value by passing every element on an array.
+
+Understanding *reduce* method is very important yet harder than the other array methods.
+
+Reduce method takes 2 input. First input is callback function, second one is for initial value.
 
 Callback function takes 4 input. They are *accumulator*, *current*, *index*, and *arr* respectively.
 
@@ -286,3 +305,55 @@ console.log(maxVal); // 3000
 ```
 
 > Please note that we can chain different array functions. In this case, we'd have neater code, but debugging would be harder. It will be hard to detect error in case we made an error. In this case, one can use callback functions with *arr* input, and log it to see results.
+
+## find()
+
+To retrieve one element on an array based on condition(callback function). Find **returns the first element that meet condition.**
+
+```js
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+
+const result = movements.find(el => el < 0);
+console.log(result); -400;
+```
+
+## findIndex()
+
+Similar to `find()`, `findIndex()` **retrieves the first index that meet condition.** Usage is very similar to `find()`.
+
+```js
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+
+const result = movements.findIndex(el => el < 0);
+console.log(result); 2;
+```
+
+## some() and every()
+
+### some()
+
+To test an array if includes a certain condition. We put a condition and check if array supports it. `some()` **returns a boolean value.**
+
+```js
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+
+const result = movements.some(el => el > 0);
+console.log(result); true;
+
+const result2 = movements.some(el => el > 5000);
+console.log(result2); false;
+```
+
+### every()
+
+Similar to `some()` but the main difference is **it retuns true if all the elements in the array satisfies the condition.**
+
+```js
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+
+const result = movements.every(el => el > 0);
+console.log(result); false;
+
+const result2 = movements.every(el => el < 5000);
+console.log(result2); true;
+```

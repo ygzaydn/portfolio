@@ -60,6 +60,7 @@ const TechStack = ({ classes, setTopic }) => {
                     item
                     xs={12}
                     className={classes.logoGrid}
+                    key={el.key}
                     onClick={() => setTopic(el.key)}
                 >
                     <img
