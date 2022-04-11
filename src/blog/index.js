@@ -47,4 +47,12 @@ export const blogPosts = [
         createDate: "30 March 2022",
         key: "6",
     },
+    {
+        topic: "react",
+        title: "React Custom Hooks",
+        name: "customhooks",
+        logoName: "react-logo",
+        createDate: "11 April 2022",
+        key: "7",
+    },
 ];
