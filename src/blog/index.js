@@ -50,7 +50,7 @@ export const blogPosts = [
     {
         topic: "react",
         title: "React Custom Hooks",
-        name: "customhooks",
+        name: "customHooks",
         logoName: "react-logo",
         createDate: "11 April 2022",
         key: "7",
