@@ -20,7 +20,51 @@ Although there are several number of hooks that we can use, it does not fully co
 
 ## useFetch custom hook
 
-Imagine that we need a GET fetch call on our component. The best place that we make this call is before component renders, so we have to use `useEffect` hook for this operation. Assume that we need more fetch operations on different component, wouldn't it be better if we have an operation to accomplish all fetch operations. At this point, it will be a might choice to build a custom hook. I will call this hook as `useFetch`.
+Imagine that we need a GET fetch call on our component. The best place that we make this call is before component renders, so we have to use `useEffect` hook for this operation. Simple code to operate fetch should look like as follows: 
+
+```js
+import React, { useState, useEffect } from 'react';
+import useFetch from '../hooks'
+
+const initialState = {
+    data: null,
+    error: null,
+    loading: null,
+}
+
+const ExampleComponent = () =>  {
+  
+  const [info, setInfo] = useState({...initialState})
+
+  const fetchData = async (url) => {
+        try {
+            const result = await fetch(url);
+            const data = await res.json();
+            setInfo(prev => ({...prev, data, loading: false}))
+        } catch (error) {
+            setInfo(prev => ({...prev, error, loading: false}))
+        }
+    }
+
+    useEffect(() => {
+        setInfo(prev => ({...prev, loading: true}))
+        fetchData(targetURL)
+    },[])
+
+  return (
+    <>
+      {error && 'Error!'}
+      {loading && 'Loading...'}
+      {data.entries.map(el => (
+        <div key={el.API}>{el.description}</div>
+      )}
+    </>
+  )
+}
+```
+
+
+Assume that we need more fetch operations on different component, wouldn't it be better if we have an operation to accomplish all fetch operations? At this point, it will be a might choice to build a custom hook. I will call this hook as `useFetch`.
 
 Main goal of this hook is to return three different values to us which are data, error and loading state, respectively.
 
@@ -59,10 +103,18 @@ const useFetch = (targetURL) => {
 
     useEffect(() => {
         setInfo(prev => ({...prev, loading: true}))
-        fetchData(targetURL)
+        fetchData("https://api.publicapis.org/entries")
     },[targetURL])
     
-    return {...info}
+    return (
+        <>
+            {error && 'Error!'}
+	    {loading && 'Loading...'}
+	    {data.entries.map(el => (
+	        <div key={el.API}>{el.description}</div>
+	    )}
+	</>
+    )
 }
 
 export default useFetch;
