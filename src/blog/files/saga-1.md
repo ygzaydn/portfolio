@@ -1,5 +1,13 @@
 # Redux Saga
 
+  - [What is Redux Saga ?](#what-is-redux-saga--)
+    - [Javascript Generators](#javascript-generators)
+      - [Generators](#generators)
+    - [Initialization of Saga](#initialization-of-saga)
+      - [Creation of First Saga](#creation-of-first-saga)
+      - [First Async Saga](#first-async-saga)
+      - [Fetch Call with Saga](#fetch-call-with-saga)
+
 ## What is Redux Saga ?
 
 `redux-saga` is brand new middleware for Redux. It helps to ease side effects (aysnc tasks like fetching, or accessing browser cache) that uses javascript generators. As stated at [origin page](https://redux-saga.js.org/docs/About/):
@@ -296,7 +304,9 @@ export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 Now we should be able to observe that buttons working as we want.
 
-![counter-gif](./counter.gif)
+![counter-gif](/counter.gif)
+
+#### First Async Saga
 
 Now we can add more functionality on the system. Lets simulate an async increase event and try to integrate it with sagas. Lets create a function that return promise after a given time.
 
@@ -398,7 +408,9 @@ export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 Let's check output now.
 
-![counter-with-delay-gif](./counterdelay.gif)
+![counter-with-delay-gif](/counterdelay.gif)
+
+#### Fetch Call with Saga
 
 As a last step, lets try to work with real fetch call. Let's create our fetch call first.
 
@@ -580,9 +592,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 Now output should look like:
 
-![fetch-gif](./fetch.gif)
-
-
+![fetch-gif](/fetch.gif)
 
 
 As a result, we've managed to run our sagas for 3 different cases. I hope this post helped you to digest saga concept on React environment. Using sagas is cutting-edge way to deal with async event and I highly recommend them.

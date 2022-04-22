@@ -55,7 +55,7 @@ export const blogPosts = [
         createDate: "11 April 2022",
         key: "7",
     },
-{
+    {
         topic: "redux",
         title: "Redux-Saga Implementation on React",
         name: "saga-1",

@@ -72,7 +72,7 @@ const useStyles = () => ({
 
         "& pre": {
             border: ".2px solid black",
-            margin: "1rem 2rem",
+            margin: "2rem 2rem",
             padding: "2rem 1rem 2rem 1rem",
             backgroundColor: "#ead9d9",
             maxWidth: "70vw",
