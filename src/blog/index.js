@@ -63,4 +63,12 @@ export const blogPosts = [
         createDate: "22 April 2022",
         key: "8",
     },
+    {
+        topic: "javascript",
+        title: "Read files in Javascript",
+        name: "read-files-in-js",
+        logoName: "javascript-logo",
+        createDate: "10 May 2022",
+        key: "9",
+    },
 ];

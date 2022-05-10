@@ -148,6 +148,7 @@ const App = ({ classes, width, limit }) => {
     const el = useRef("");
     const navigate = useNavigate();
     useEffect(() => {
+        window.scrollTo(0, 0);
         const typed = new Typed(el.current, {
             strings: ["erolyagizaydin"],
             typeSpeed: 50,
