@@ -34,6 +34,7 @@ import GoldenLotusImage from "./images/goldenlotus.jpg";
 import TodoImage from "./images/todo.jpg";
 import SongRecommenderImage from "./images/song-recommender.jpg";
 import ArgbotImage from "./images/argbot.jpg";
+import IkinciElImage from "./images/ikincielproject.png";
 
 const useStyles = () => ({
     homepageContainer: {
@@ -333,6 +334,15 @@ const App = ({ classes, width, limit }) => {
                             note="You can login with any id/password combination to check overall system."
                             link="https://argbotxyz.web.app"
                             size="huge"
+                        />
+                        <ProjectCard
+                            title="Ikinci El Project"
+                            description="İkinci el project is a platform to buy and sell products that've been used before."
+                            image={IkinciElImage}
+                            tech="Javascript - Redux - React - SCSS"
+                            note="Please create an accout for yourself to surf around the platform - it's free to register!"
+                            link="https://ikincielproject.web.app"
+                            size="big"
                         />
                         <ProjectCard
                             title="Song Recommender"

@@ -1,0 +1,21 @@
+[debug] [2022-05-10T11:23:36.888Z] ----------------------------------------------------------------------
+[debug] [2022-05-10T11:23:36.890Z] Command:       /usr/bin/node /usr/bin/firebase deploy
+[debug] [2022-05-10T11:23:36.890Z] CLI Version:   9.20.0
+[debug] [2022-05-10T11:23:36.890Z] Platform:      linux
+[debug] [2022-05-10T11:23:36.890Z] Node Version:  v14.19.1
+[debug] [2022-05-10T11:23:36.890Z] Time:          Tue May 10 2022 14:23:36 GMT+0300 (GMT+03:00)
+[debug] [2022-05-10T11:23:36.890Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-05-10T11:23:36.893Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2022-05-10T11:23:36.933Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-05-10T11:23:36.933Z] > authorizing via signed-in user (ygzaydns@gmail.com)
+[debug] [2022-05-10T11:23:36.933Z] [iam] checking project erolyagizaydin for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-05-10T11:23:36.934Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2022-05-10T11:23:36.934Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-05-10T11:25:46.965Z] [iam] error while checking permissions, command may fail: FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2022-05-10T11:25:46.965Z] > refreshing access token with scopes: []
+[debug] [2022-05-10T11:25:46.966Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>

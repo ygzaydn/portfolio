@@ -22,7 +22,7 @@ const useStyles = () => ({
         color: "rgb(75, 202, 135)",
 
         paddingTop: "5rem",
-        "@media only screen and (max-width:900px)": {
+        "@media only screen and (max-width:)": {
             paddingTop: "2rem",
         },
     },
@@ -36,7 +36,7 @@ const useStyles = () => ({
         display: "flex",
         flexDirection: "column",
 
-        "@media only screen and (max-width:900px)": {
+        "@media only screen and (max-width:)": {
             margin: "1rem",
             height: "20rem",
             padding: "0 .4rem",
@@ -47,12 +47,13 @@ const useStyles = () => ({
         borderRadius: 20,
         padding: "0 2rem 1rem 2rem",
         margin: "0 2rem",
-        height: "30rem",
+        minHeight: "15rem",
+        maxHeight: "30rem",
         overflow: "auto",
         display: "flex",
         flexDirection: "column",
 
-        "@media only screen and (max-width:900px)": {
+        "@media only screen and (max-width:)": {
             margin: "1rem",
             height: "auto",
             padding: "0 .4rem",
@@ -61,7 +62,7 @@ const useStyles = () => ({
     contentGrid: {
         marginTop: "5rem",
         padding: "2rem 4rem",
-        "@media only screen and (max-width:900px)": {
+        "@media only screen and (max-width:)": {
             padding: "0.2rem 0.4rem",
             margin: "1rem 0",
         },
@@ -92,15 +93,21 @@ const useStyles = () => ({
             height: "4rem",
             width: "auto",
         },
-        "@media only screen and (max-width:900px)": {
+        "@media only screen and (max-width:)": {
             padding: "1rem 0.2rem",
         },
     },
     whiteColor: {
         color: "#fff",
-        "@media only screen and (max-width:900px)": {
+        "@media only screen and (max-width:)": {
             fontSize: "125%",
         },
+    },
+    leftGrid: {
+        margin: "0 0 2rem 0",
+    },
+    rightGrid: {
+        margin: "0 0 2rem 0",
     },
 });
 
@@ -126,7 +133,7 @@ const Blog = ({ classes }) => {
                     Blog
                 </Typography>
                 <Grid container className={classes.contentGrid}>
-                    <Grid item xs={12} sm={4} className={classes.leftGrid}>
+                    <Grid item xs={12} md={4} className={classes.leftGrid}>
                         <Grid item xs={12} className={classes.innerGridTopic}>
                             <Typography
                                 variant="h6"
@@ -137,7 +144,7 @@ const Blog = ({ classes }) => {
                             <BlogTechGrid setTopic={setMyTopic} />
                         </Grid>
                     </Grid>
-                    <Grid item xs={12} sm={8} className={classes.rightGrid}>
+                    <Grid item xs={12} md={8} className={classes.rightGrid}>
                         <Grid item xs={12} className={classes.innerGrid}>
                             <Typography
                                 variant="h6"

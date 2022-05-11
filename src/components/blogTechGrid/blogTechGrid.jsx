@@ -13,7 +13,7 @@ const useStyles = () => ({
             display: "grid",
             gridAutoFlow: "column",
             justifyContent: "start",
-            overflowY: "scroll",
+            overflowY: "auto",
             minHeight: "10rem",
             alignItems: "center",
             padding: "0 1rem",
