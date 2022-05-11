@@ -98,10 +98,6 @@ const useStyles = () => ({
                 ? "polygon(0% 3.5%, 100% 0%, 100% 100%, 0% 100%)"
                 : "polygon(0% 7.5%, 100% 0%, 100% 100%, 0% 100%)",
     },
-    projectsGrid: {
-        justifyContent: "center",
-        padding: "0.5rem",
-    },
     projectsContainer: {
         padding: (props) => (props.width < props.limit ? "5% 0" : "15vh 2rem"),
     },
@@ -352,15 +348,15 @@ const App = ({ classes, width, limit }) => {
                             link="https://song-recommender-001.web.app/"
                             size="big"
                         />
-                        <Grid className={classes.projectsGrid}>
-                            <ProjectCard
-                                title="Golden Lotus Boost Community"
-                                description="Golden Lotus boost community is one of the largest EU gold boost communities in video game World of Warcraft (WoW), housing some of the best players & guilds in the world "
-                                image={GoldenLotusImage}
-                                tech="Javascript - React - Firebase - Material UI"
-                                link="https://goldenlotus-website.web.app/"
-                            />
-                        </Grid>
+
+                        <ProjectCard
+                            title="Golden Lotus Boost Community"
+                            description="Golden Lotus boost community is one of the largest EU gold boost communities in video game World of Warcraft (WoW), housing some of the best players & guilds in the world "
+                            image={GoldenLotusImage}
+                            tech="Javascript - React - Firebase - Material UI"
+                            link="https://goldenlotus-website.web.app/"
+                        />
+
                         <ProjectCard
                             title="Icecrown Boost Community"
                             description="Icecrown boost community is one of the largest EU gold boost communities in video game World of Warcraft (WoW), housing some of the best players & guilds in the world "
