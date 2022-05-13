@@ -87,4 +87,12 @@ export const blogPosts = [
         createDate: "13 May 2022",
         key: "11",
     },
+    {
+        topic: "react",
+        title: "Code Splitting in React",
+        name: "code-splitting",
+        logoName: "react-logo",
+        createDate: "13 May 2022",
+        key: "12",
+    },
 ];
