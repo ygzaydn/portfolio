@@ -71,4 +71,12 @@ export const blogPosts = [
         createDate: "10 May 2022",
         key: "9",
     },
+     {
+        topic: "react",
+        title: "Dropping Image Files on React",
+        name: "drop-image-react",
+        logoName: "react-logo",
+        createDate: "13 May 2022",
+        key: "10",
+    },
 ];
