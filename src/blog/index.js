@@ -79,4 +79,12 @@ export const blogPosts = [
         createDate: "13 May 2022",
         key: "10",
     },
+    {
+        topic: "react",
+        title: "Controlled & Uncontrolled Components",
+        name: "controlled-uncontrolled-input",
+        logoName: "react-logo",
+        createDate: "13 May 2022",
+        key: "11",
+    },
 ];
