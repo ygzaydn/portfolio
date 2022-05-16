@@ -95,4 +95,12 @@ export const blogPosts = [
         createDate: "13 May 2022",
         key: "12",
     },
+    {
+        topic: "react",
+        title: "Handling Errors in React",
+        name: "error-handling",
+        logoName: "react-logo",
+        createDate: "16 May 2022",
+        key: "13",
+    },
 ];
