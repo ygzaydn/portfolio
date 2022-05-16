@@ -34,7 +34,7 @@ import GoldenLotusImage from "./images/goldenlotus.jpg";
 import TodoImage from "./images/todo.jpg";
 import SongRecommenderImage from "./images/song-recommender.jpg";
 import ArgbotImage from "./images/argbot.jpg";
-import IkinciElImage from "./images/ikincielproject.png";
+import IkinciElImage from "./images/ikincielproject.webp";
 
 const useStyles = () => ({
     homepageContainer: {

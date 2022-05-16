@@ -66,6 +66,7 @@ const TechStack = ({ classes, setTopic }) => {
                     <img
                         src={require(`../../logo/${el.logo}.svg`).default}
                         alt={`${el.logo}`}
+                        style={{ width: 40, height: 40 }}
                     />{" "}
                     <Typography variant="h6" color="secondary">
                         {el.name}

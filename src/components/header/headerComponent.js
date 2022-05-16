@@ -57,7 +57,6 @@ const Header = ({ classes }) => {
     const limit = 900;
 
     const scrollTo = (element) => {
-        console.log("asd");
         document.getElementById(`${element}`).scrollIntoView({
             behavior: "smooth",
             block: "start",
@@ -65,22 +64,7 @@ const Header = ({ classes }) => {
     };
 
     useEffect(() => {
-        let y = window.pageYOffset;
-        let header = document.getElementById("header");
-        if (header) {
-            if (y) {
-                header.style.backgroundColor = "black";
-                header.style.borderBottom = "0.2px solid lightgray";
-                header.style.zIndex = "500";
-                header.style.padding = "0";
-            } else {
-                header.style.backgroundColor = "inherit";
-                header.style.borderBottom = "none";
-                header.style.padding = "2%";
-            }
-        }
-
-        window.addEventListener("scroll", () => {
+        const scrollFunc = () => {
             let y = window.pageYOffset;
             let header = document.getElementById("header");
             if (header) {
@@ -95,7 +79,12 @@ const Header = ({ classes }) => {
                     header.style.padding = "2%";
                 }
             }
-        });
+        };
+
+        scrollFunc();
+
+        window.addEventListener("scroll", () => scrollFunc());
+        return () => window.removeEventListener("scroll", () => scrollFunc());
     }, []);
 
     useEffect(() => {

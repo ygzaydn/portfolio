@@ -93,8 +93,10 @@ const useStyles = () => ({
             height: "4rem",
             width: "auto",
         },
-        "@media only screen and (max-width:)": {
-            padding: "1rem 0.2rem",
+        "@media only screen and (max-width:600px)": {
+            display: "block",
+            maxHeight: 500,
+            padding: 0,
         },
     },
     whiteColor: {
@@ -167,7 +169,11 @@ const Blog = ({ classes }) => {
                                                     .default
                                             }
                                             alt={`${logoName}`}
-                                            style={{ flex: 1 }}
+                                            style={{
+                                                flex: 1,
+                                                width: 40,
+                                                height: 40,
+                                            }}
                                         />
                                         <Typography
                                             variant="h6"

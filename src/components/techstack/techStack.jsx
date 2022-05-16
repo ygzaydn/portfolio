@@ -45,6 +45,7 @@ const TechStack = ({ classes }) => {
                     <img
                         src={require(`../../logo/${el.logo}.svg`).default}
                         alt={`${el.logo}`}
+                        style={{ width: "4rem", height: "4rem" }}
                     />
                     <Typography variant="h6" color="secondary">
                         {el.name}
