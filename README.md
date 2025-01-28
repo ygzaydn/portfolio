@@ -1,1 +1,1 @@
-My portfolio page that give more information about me.
+My portfolio page, which provides more details about me.
